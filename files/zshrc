@@ -80,6 +80,7 @@ function gem(){
 # for Mac OS X
 case ${OSTYPE} in darwin*)
 	alias tmux="SHELL=$HOME/.homebrew/bin/zsh tmux"
+	source "$HOME/.homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 	function brew(){
 		$HOME/.homebrew/bin/brew $*
