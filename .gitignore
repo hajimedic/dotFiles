@@ -1,0 +1,17 @@
+files/earthquake/history*
+files/earthquake/config
+files/vim/bundle/*
+files/vim/undo/*
+files/vim/cache/*
+files/vim/tmp/*
+files/vim/.netrwhist
+!.gitkeep
+
+*.pyc
+*.pyo
+*.swp
+._*
+*~
+.DS_Store
+*.bak
+*.mo
