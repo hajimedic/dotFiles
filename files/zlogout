@@ -1,0 +1,12 @@
+LOGFILE=$HOME/.last_log
+
+logout_date=`date +%H:%M`
+logout_sec=`date +%s`
+
+if [[ ! -z $login_sec && ! -z $login_date ]]; then
+	total_min=`expr \( $logout_sec - $login_sec \) / 60`
+	hour=`expr $total_min / 60`
+	min=`expr $total_min % 60`
+	time_format=`printf '(%02d:%02d)' $hour $min`
+	echo $login_date '-' $logout_date $time_format >> $LOGFILE
+fi

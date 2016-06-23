@@ -1,0 +1,41 @@
+[user]
+	name = h-oizumi
+	email = h.oizumi@gigei.jp
+[credential]
+	helper = osxkeychain
+[core]
+	editor = vim
+	pager = LESS=-r less
+	autocrlf = input
+
+[tig "bind"]
+	generic = g move-first-line
+	generic = G move-last-line
+	generic = <Ctrl-f> move-page-down
+	generic = <Ctrl-b> move-page-up
+[alias]
+	ch = checkout
+	st = status
+	di = diff --color-words
+	lo = log --graph --decorate
+	gr = grep --context=2 --line-number
+	ff = merge --ff
+	d1 = diff HEAD~            # HEADから1つ前とdiff
+	d2 = diff HEAD~~           # HEADから2つ前とdiff
+	d3 = diff HEAD~~~          # HEADから3つ前とdiff
+	d4 = diff HEAD~~~~         # HEADから4つ前とdiff
+	d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
+	d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
+[color]
+	ui = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[push]
+	default = simple
+[fetch]
+	prune = true
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f

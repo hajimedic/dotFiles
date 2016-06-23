@@ -1,0 +1,19 @@
+" syntax on
+source ~/.vimrc
+
+set columns=260
+set lines=80
+set background=dark
+
+set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27
+set guifont=ricty_regular_for_powerline:h13
+" set guitablabel=>%t\ %m
+
+set transparency=10
+" autocmd FocusGained * set background
+" autocmd FocusLost * set background
+ 
+noremap <C-Tab> :tabnext<CR>
+noremap <C-S-Tab> :tabprevious<CR>
+
+source ~/.vim/highlight_gui.vim

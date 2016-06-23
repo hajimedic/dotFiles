@@ -1,0 +1,73 @@
+#! /bin/sh
+
+
+PROGNAME=$(basename $0)
+
+NAME_BY_BASE64='cmFrdW1vCg=='
+NAME=`echo $NAME_BY_BASE64 | base64 -D`
+
+STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
+WORKSPACE=$HOME/workspace/$NAME
+EXTRA_OPT=''
+
+usage() {
+    echo "usage: $PROGNAME [default] [deploy] [feature] [sendmail] [clear_datastore]"
+    echo
+    echo "Options:"
+    echo "  default:           use storage for default test"
+    echo "  deploy:            use workspace for deploy"
+    echo "  feature:           use workspace for feature"
+    echo "  sendmail:          use '--enable_sendmail'"
+    echo "  clear_datastore:   use '--clear_datastore'"
+    echo
+    exit 1
+}
+
+####### python 2.7 #########
+for OPT in $@
+do
+	case $OPT in
+		'def'|'default' )
+			STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
+			echo 'default option'
+			;;
+		'dep'|'deploy' )
+			WORKSPACE=$WORKSPACE"-deploy"
+			echo "use $WORKSPACE"
+			;;
+		'feature' )
+			WORKSPACE=$WORKSPACE"-feature"
+			echo "use $WORKSPACE"
+			;;
+		'sendmail'|'--enable_sendmail' )
+			EXTRA_OPT=$EXTRA_OPT' --enable_sendmail'
+			echo "use $EXTRA_OPT"
+			;;
+		'clear_datastore'|'--clear_datastore' )
+			echo 'clear datastore'
+			# EXTRA_OPT=$EXTRA_OPT' --clear_datastore=true'
+			# echo "use $EXTRA_OPT"
+			;;
+        '-h'|'--help'|'help' )
+            usage
+            exit 1
+            ;;
+		* )
+            echo "$PROGNAME: $1: No such options" 1>&2
+			usage
+			exit 1
+			;;
+	esac
+done
+
+cd $HOME/workspace
+pyenv version
+
+python $GAE_PATH/dev_appserver.py \
+	--host=localhost \
+	--show_mail_body=true \
+	--log_level=debug \
+	--dev_appserver_log_level=debug \
+	--storage_path=$STORAGE_PATH \
+	$WORKSPACE \
+	$EXTRA_OPT

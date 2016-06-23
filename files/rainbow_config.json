@@ -1,0 +1,41 @@
+{
+    "HEARTBEAT_TIMEOUT": 120, 
+    "IMAGE_ON_TERM": false, 
+    "THEME": "tomorrow_night", 
+    "ASCII_ART": true, 
+    "HIDE_PROMPT": true, 
+    "PREFIX": "#owner#place#me#keyword", 
+    "SEARCH_TYPE": "mixed", 
+    "SEARCH_MAX_RECORD": 20, 
+    "HOME_TWEET_NUM": 20, 
+    "RETWEETS_SHOW_NUM": 5, 
+    "CONVERSATION_MAX": 30, 
+    "QUOTE_FORMAT": "#comment RT #owner: #tweet", 
+    "THREAD_META_LEFT": "(#id) #clock", 
+    "THREAD_META_RIGHT": "#clock (#id)", 
+    "THREAD_MIN_WIDTH": 20, 
+    "NOTIFY_FORMAT": "  #source_user #notify #clock", 
+    "MESSAGES_DISPLAY": 5, 
+    "TREND_MAX": 10, 
+    "LIST_MAX": 5, 
+    "ONLY_LIST": [], 
+    "IGNORE_LIST": [], 
+    "HISTORY_FILENAME": ".rainbow_completer.hist", 
+    "IMAGE_SHIFT": 2, 
+    "IMAGE_MAX_HEIGHT": 90, 
+    "STREAM_DELAY": 0, 
+    "USER_DOMAIN": "userstream.twitter.com", 
+    "PUBLIC_DOMAIN": "stream.twitter.com", 
+    "SITE_DOMAIN": "sitestream.twitter.com", 
+    "FORMAT": {
+        "TWEET": {
+            "CLOCK_FORMAT": "%Y/%m/%d %H:%M:%S", 
+            "DISPLAY": "\n[id:#id] #name (#nick) #clock via #client \n#tweet \nrt:#rt_count fav:#fa_count #fav"
+        }, 
+        "MESSAGE": {
+            "CLOCK_FORMAT": "%Y/%m/%d %H:%M:%S", 
+            "DISPLAY": "\n[message_id:#id] #sender_name (#sender_nick) #to #recipient_name (#recipient_nick) #clock:\n#message"
+        }
+    }, 
+    "IMAGE_RESIZE_TO_FIT": false
+}
