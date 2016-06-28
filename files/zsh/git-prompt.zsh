@@ -189,9 +189,21 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 
-# ⭠⮀⮁
+## unicode characters selection
+# ⭠
+# ⮀
+# ⮁
+# ⮂
+# ⮃
+# ۞
+# ◤
+# ◢
+# ◥
+# ◣
+# ⮐
+# ⮑
 
-# # setting for git-prompt
+## setting for git-prompt
 # ZSH_THEME_GIT_PROMPT_PREFIX=" ⭠ "
 # ZSH_THEME_GIT_PROMPT_SUFFIX=""
 # ZSH_THEME_GIT_PROMPT_SEPARATOR=":"

@@ -14,7 +14,8 @@ local p_cdir_end="$p_cdir_end_color_bg⮀"$'\n'
 #
 local p_host="$p_color_orange%m$p_color_reset"
 local p_user="$p_color_orange%n$p_color_reset"
-local p_info="%F{red}⮁%f $p_user@$p_host"
+local p_info="%F{red}⮑ %f $p_user@$p_host"
+# local p_info="%F{red}♺ %f $p_user@$p_host"
 local p_mark="%B%(!,#,$)%b"
 # local p_mark="%#"
 
@@ -108,6 +109,9 @@ case ${OSTYPE} in darwin*)
 	}
 	;;
 esac
+
+# for python
+export PYTHON_CONFIGURE_OPTS='--enable-unicode=ucs4'
 
 
 typeset -U path cdpath fpath manpath
