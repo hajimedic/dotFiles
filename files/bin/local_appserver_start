@@ -70,4 +70,5 @@ python $GAE_PATH/dev_appserver.py \
 	--dev_appserver_log_level=debug \
 	--storage_path=$STORAGE_PATH \
 	$WORKSPACE \
+	$WORKSPACE/backend*.yaml \
 	$EXTRA_OPT
