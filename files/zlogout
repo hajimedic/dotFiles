@@ -8,5 +8,10 @@ if [[ ! -z $login_sec && ! -z $login_date ]]; then
 	hour=`expr $total_min / 60`
 	min=`expr $total_min % 60`
 	time_format=`printf '(%02d:%02d)' $hour $min`
-	echo $login_date '-' $logout_date $time_format >> $LOGFILE
+	echo $TTY'\t'$login_date '-' $logout_date $time_format >> $LOGFILE
+
+	LOGTEMP=/var/tmp/.last_log_$login_sec
+	if [ -e $LOGTEMP ]; then
+		rm $LOGTEMP
+	fi
 fi
