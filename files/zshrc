@@ -67,8 +67,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 function llast(){
-	cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
-	# tail -r $* $HOME/.last_log | less
+	if ls /var/tmp/.last_log* > /dev/null 2>&1; then
+		cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
+	else
+		tail -r $* $HOME/.last_log | less
+	fi
 }
 
 function gem(){

@@ -187,6 +187,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'ejholmes/vim-forcedotcom'
+" NeoBundle 'kakkyz81/evervim'
 
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundleLazy "lambdalisue/vim-django-support", {
@@ -212,7 +213,8 @@ filetype indent on
 NeoBundleCheck
 
 " syntastic setting
-let g:syntastic_python_checkers = ['pep8', 'pylint']
+let g:syntastic_python_checkers = ['pylint', 'pep8']
+" let g:syntastic_python_checkers = ['pep8', 'pylint']
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
 " let g:loaded_syntastic_python_pylint_checker = 0
@@ -370,3 +372,6 @@ endfunction
 function! MyMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+" for evervim
+" source ~/.evervimrc
