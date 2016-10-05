@@ -49,7 +49,6 @@ alias cpanm="sudo cpanm"
 alias tma="tmux a"
 alias ping="ping -t 3"
 alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
-alias earthquake="bash $HOME/.earthquake/earthquake_history_clean.sh;earthquake"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
 
@@ -95,11 +94,11 @@ case ${OSTYPE} in darwin*)
 	}
 
 	# MacVIM
-	if [ -e $HOME/.homebrew/opt/macvim/MacVim.app ]; then
-		alias vi="env LANG=ja_JP.UTF-8 $HOME/.homebrew/opt/macvim/MacVim.app/Contents/MacOS/Vim \"\$@\""
-		alias vim="env LANG=ja_JP.UTF-8 $HOME/.homebrew/opt/macvim/MacVim.app/Contents/MacOS/Vim \"\$@\""
-		alias view="env LANG=ja_JP.UTF-8 $HOME/.homebrew/opt/macvim/MacVim.app/Contents/MacOS/Vim -R \"\$@\""
-	fi
+	# if [ -e /Applications/MacVim.app ]; then
+	# 	alias vi="env LANG=ja_JP.UTF-8   /Applications/MacVim.app/Contents/MacOS/Vim \"\$@\""
+	# 	alias vim="env LANG=ja_JP.UTF-8  /Applications/MacVim.app/Contents/MacOS/Vim \"\$@\""
+	# 	alias view="env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -R \"\$@\""
+	# fi
 
 	# hub
 	# eval "$(hub alias -s)"
