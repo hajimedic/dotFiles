@@ -1,7 +1,7 @@
 " syntax on
 source ~/.vimrc
 
-set columns=260
+set columns=220
 set lines=80
 set background=dark
 
