@@ -45,7 +45,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[.]=**'
 alias ls="ls -GFh"
 alias ll="ls -l"
 alias la="ls -al"
-alias cpanm="sudo cpanm"
 alias tma="tmux a"
 alias ping="ping -t 3"
 alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
