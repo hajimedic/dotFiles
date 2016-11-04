@@ -17,7 +17,7 @@ highlight Cursor guibg=orange
 highlight Include guifg=#ee88dd
 highlight Keyword guifg=#ee4444
 highlight Label guifg=#ee4444
-highlight Normal guifg=white
+highlight Normal guifg=white guibg=Grey10
 highlight Number guifg=#44cccc
 highlight PreProc guifg=#ee88dd
 highlight String guifg=#44cccc
