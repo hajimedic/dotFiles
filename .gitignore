@@ -1,6 +1,7 @@
 files/earthquake/history*
 files/earthquake/config
 files/vim/bundle/*
+files/vim/dein/*
 files/vim/undo/*
 files/vim/cache/*
 files/vim/tmp/*

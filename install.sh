@@ -11,8 +11,13 @@ if [ ! -e $HOME/.vim/bundle ]; then
 else
 	echo 'already make bundle'
 fi
-if [ ! -e $HOME/.vim/bundle/neobundle.vim ]; then
-	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+# if [ ! -e $HOME/.vim/bundle/neobundle.vim ]; then
+# 	git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+# else
+# 	echo 'already git clone neobundle.vim'
+# fi
+if [ ! -e $HOME/.vim/dein/repos/github.com/Shougo/dein.vim ]; then
+	git clone https://github.com/Shougo/dein.vim ~/.vim/dein/repos/github.com/Shougo/dein.vim
 else
-	echo 'already git clone neobundle.vim'
+	echo 'already git clone Shougo/dein.vim'
 fi

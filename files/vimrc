@@ -151,67 +151,97 @@ end
 "use EnhCommentify
 helptags ~/.vim/doc
 
-"use NeoBundle
-set nocompatible
-filetype on
+" "use NeoBundle
+" set nocompatible
+" filetype on
+"
+" if has('vim_starting')
+" 	" Required:
+" 	set runtimepath+=~/.vim/bundle/neobundle.vim
+" endif
+" " Required:
+" call neobundle#begin(expand('~/.vim/bundle/'))
+"
+" " originalrepos on github
+" " Required:
+" NeoBundle 'Shougo/neobundle.vim'
+" NeoBundle 'VimClojure'
+" NeoBundle 'Shougo/unite.vim'
+" if has('lua')
+" 	NeoBundle 'Shougo/neocomplete.vim'
+" endif
+" NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'jpalardy/vim-slime'
+" NeoBundle 'Shougo/vimfiler'
+" NeoBundle 'itchyny/lightline.vim'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'sjl/gundo.vim'
+" NeoBundle 'tomtom/tcomment_vim'
+" " NeoBundle 'taglist.vim'
+" NeoBundle 'LeafCage/yankround.vim'
+" NeoBundle 'Shougo/vimproc', {
+"       \ 'build' : {
+"       \     'windows' : 'make -f make_mingw32.mak',
+"       \     'cygwin' : 'make -f make_cygwin.mak',
+"       \     'mac' : 'make -f make_mac.mak',
+"       \     'unix' : 'make -f make_unix.mak',
+"       \    },
+"       \ }
+" NeoBundle 'Shougo/vimshell.vim'
+" " NeoBundle 'ejholmes/vim-forcedotcom'
+"
+" NeoBundle 'davidhalter/jedi-vim'
+" NeoBundleLazy "lambdalisue/vim-django-support", {
+"       \ "depends": ['davidhalter/jedi-vim'],
+"       \ "autoload": {
+"       \     "filetypes": ["python", "python3", "htmldjango"]
+"       \    },
+"       \ }
+" NeoBundleLazy "lambdalisue/vim-pyenv", {
+"       \ "depends": ['davidhalter/jedi-vim'],
+"       \ "autoload": {
+"       \     "filetypes": ["python", "python3", "htmldjango"]
+"       \    },
+"       \ }
+"
+" call neobundle#end()
+"
+" filetype plugin indent on	 " required!
+" filetype indent on
+"
+" " If there are uninstalled bundles found on startup,
+" " this will conveniently prompt you to install them.
+" NeoBundleCheck
 
-if has('vim_starting')
-	" Required:
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+" " use dein.vim
+if &compatible
+  set nocompatible
 endif
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-" originalrepos on github
-" Required:
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'VimClojure'
-NeoBundle 'Shougo/unite.vim'
+call dein#begin(expand('~/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
+call dein#add('VimClojure')
+call dein#add('Shougo/unite.vim')
 if has('lua')
-	NeoBundle 'Shougo/neocomplete.vim'
+	call dein#add('Shougo/neocomplete.vim')
 endif
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'tomtom/tcomment_vim'
-" NeoBundle 'taglist.vim'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimshell.vim'
-" NeoBundle 'ejholmes/vim-forcedotcom'
+call dein#add('scrooloose/syntastic')
+call dein#add('jpalardy/vim-slime')
+call dein#add('Shougo/vimfiler')
+call dein#add('itchyny/lightline.vim')
+call dein#add('sjl/gundo.vim')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('LeafCage/yankround.vim')
+call dein#add('Shougo/vimproc', {'build': 'make'})
+call dein#add('Shougo/vimshell.vim')
+call dein#add('lambdalisue/vim-django-support')
+call dein#add('lambdalisue/vim-pyenv')
 
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundleLazy "lambdalisue/vim-django-support", {
-      \ "depends": ['davidhalter/jedi-vim'],
-      \ "autoload": {
-      \     "filetypes": ["python", "python3", "htmldjango"]
-      \    },
-      \ }
-NeoBundleLazy "lambdalisue/vim-pyenv", {
-      \ "depends": ['davidhalter/jedi-vim'],
-      \ "autoload": {
-      \     "filetypes": ["python", "python3", "htmldjango"]
-      \    },
-      \ }
+call dein#end()
 
-call neobundle#end()
-
-filetype plugin indent on	 " required!
-filetype indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+filetype plugin indent on
 
 " syntastic setting
 let g:syntastic_python_checkers = ['pylint', 'pep8']
