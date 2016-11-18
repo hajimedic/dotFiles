@@ -6,7 +6,7 @@ local p_cdir_color_fg=$'%{\e[38;5;15m%}'
 local p_cdir_color_bg=$'%{\e[48;5;17m%}'
 local p_cdir_end_color_fg=$'%{\e[38;5;17m%}'
 local p_cdir_end_color_bg=$'%{\e[48;5;0m%}'
-local p_cdir="$p_cdir_color_bg%F{blue}⮀%f %d $p_cdir_end_color_fg"
+local p_cdir="$p_cdir_color_bg%F{blue}⮀%f %~ $p_cdir_end_color_fg"
 local p_cdir_full="[%F{green}%~%f]"
 local p_cdir_end="$p_cdir_end_color_bg⮀"$'\n'
 
