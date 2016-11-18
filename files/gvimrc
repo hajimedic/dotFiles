@@ -6,7 +6,7 @@ set lines=80
 set background=dark
 
 set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27
-set guifont=ricty_regular_for_powerline:h13
+set guifont=ricty_diminished_regular:h13
 " set guitablabel=>%t\ %m
 
 set transparency=10
