@@ -122,17 +122,6 @@ function! s:mkdir(dir, force)
 endfunction
 autocmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 
-" workspaceの中でのみの設定
-let current_dir = expand("%:p:h")
-if matchstr(current_dir, "/workspace") == "/workspace"
-	" GAEを追加
-	let $PYTHONPATH = $GAE_PATH.":./"
-	" workspace/binをパスに追加
-	let $PATH = $HOME."/workspace/bin:".$HOME."/.pyenv/shims:".$PATH
-	" htmlのfiletypeをhtmldjangoに設定 (VIM 7.4以降は不要?)
-	autocmd BufNewFile,BufRead *.html setfiletype htmldjango
-endif
-
 if has('lua')
 	" NeoCompleteを有効にする
 	let g:neocomplete#enable_at_startup = 1
@@ -246,6 +235,15 @@ filetype plugin indent on
 
 " syntastic setting
 let g:syntastic_python_checkers = ['pylint', 'pep8']
+let g:syntastic_python_pylint_post_args =
+    \ '--msg-template="{path}:{line}:{column}:{C}: [{msg_id}: {symbol}] {msg}"'
+
+" workspaceの中にいる場合
+if matchstr(expand("%:p:h"), "/workspace") == "/workspace"
+	let g:syntastic_python_pylint_exec = $HOME."/workspace/bin/pylint"
+	let g:syntastic_python_pep8_exec = $HOME."/workspace/bin/pep8"
+endif
+
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
 let g:syntastic_javascript_eslint_exec = 'eslint'
 " let g:loaded_syntastic_python_pylint_checker = 0
