@@ -28,6 +28,7 @@ set noswapfile
 " since ver.8.0
 set breakindent
 
+autocmd FileType python setlocal tabstop=4 noexpandtab
 
 "undo
 if has('persistent_undo')
@@ -229,9 +230,21 @@ call dein#add('Shougo/vimshell.vim')
 call dein#add('lambdalisue/vim-django-support')
 call dein#add('lambdalisue/vim-pyenv')
 
+call dein#add('kannokanno/previm')
+call dein#add('tpope/vim-markdown')
+
 call dein#end()
 
 filetype plugin indent on
+
+
+" markdown setting
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " syntastic setting
 let g:syntastic_python_checkers = ['pylint', 'pep8']
@@ -271,11 +284,11 @@ set runtimepath+='$HOME/.vim/bundle/vim-fugitive'
 noremap <C-w><C-e> :VimFilerExplorer -winwidth=30<CR>
 let g:vimfiler_ignore_pattern = '\%(^\.\|.pyo$\|.mo$\|.pyc$\)'
 
-" "jedi-vim setting
-autocmd FileType python setlocal tabstop=4 noexpandtab
-" "jedi-vim setting (neoconpleteとのコラボ用)
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
+" " "jedi-vim setting
+" autocmd FileType python setlocal tabstop=4 noexpandtab
+" " "jedi-vim setting (neoconpleteとのコラボ用)
+" let g:jedi#completions_enabled = 0
+" let g:jedi#auto_vim_configuration = 0
 
 "
 " if !exists('g:neocomplete#force_omni_input_patterns')
