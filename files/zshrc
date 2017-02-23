@@ -42,6 +42,18 @@ zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=31'
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[.]=**'
 
+# pip zsh completion start
+function _pip_completion {
+	local words cword
+	read -Ac words
+	read -cn cword
+	reply=( $( COMP_WORDS="$words[*]" \
+	           COMP_CWORD=$(( cword-1 )) \
+	           PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
+# pip zsh completion end
+
 alias ls="ls -GFh"
 alias ll="ls -l"
 alias la="ls -al"
@@ -66,9 +78,11 @@ eval "$(pyenv init -)"
 
 function llast(){
 	if ls /var/tmp/.last_log* > /dev/null 2>&1; then
-		cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
+		# cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
+		cat $HOME/.last_log /var/tmp/.last_log* | tail -n 30 $* | less
 	else
-		tail -r $* $HOME/.last_log | less
+		# tail -r $* $HOME/.last_log | less
+		tail -n 30 $* $HOME/.last_log | less
 	fi
 }
 
