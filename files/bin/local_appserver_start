@@ -11,10 +11,11 @@ WORKSPACE=$HOME/workspace/$NAME
 EXTRA_OPT=''
 
 usage() {
-    echo "usage: $PROGNAME [default] [deploy] [feature] [sendmail] [clear_datastore]"
+    echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [sendmail] [clear_datastore]"
     echo
     echo "Options:"
     echo "  default:           use storage for default test"
+    echo "  hotfix:            use workspace for hotfix"
     echo "  deploy:            use workspace for deploy"
     echo "  feature:           use workspace for feature"
     echo "  sendmail:          use '--enable_sendmail'"
@@ -30,6 +31,10 @@ do
 		'def'|'default' )
 			STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
 			echo 'default option'
+			;;
+		'hotfix' )
+			WORKSPACE=$WORKSPACE"-hotfix"
+			echo "use $WORKSPACE"
 			;;
 		'dep'|'deploy' )
 			WORKSPACE=$WORKSPACE"-deploy"
@@ -69,6 +74,7 @@ python $GAE_PATH/dev_appserver.py \
 	--log_level=debug \
 	--dev_appserver_log_level=debug \
 	--storage_path=$STORAGE_PATH \
+    --watcher_ignore_re='.*/(docs|static)/.*' \
 	$WORKSPACE \
 	$WORKSPACE/backend*.yaml \
 	$EXTRA_OPT
