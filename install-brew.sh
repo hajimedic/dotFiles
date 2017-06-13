@@ -23,9 +23,4 @@ brew update
 
 
 # completion for zsh
-ln -s ~/.homebrew/Library/Contributions/brew_zsh_completion.zsh ~/.homebrew/share/zsh/site-functions/_brew
-
-
-## Install macvim-kaoriya
-# brew tap supermomonga/homebrew-splhack
-# brew install macvim-kaoriya
+ln -snfv ~/.homebrew/Library/Contributions/brew_zsh_completion.zsh ~/.homebrew/share/zsh/site-functions/_brew
