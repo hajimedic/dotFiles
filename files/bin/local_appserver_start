@@ -11,13 +11,14 @@ WORKSPACE=$HOME/workspace/$NAME
 EXTRA_OPT=''
 
 usage() {
-    echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [sendmail] [clear_datastore]"
+    echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [showmail] [sendmail] [clear_datastore]"
     echo
     echo "Options:"
     echo "  default:           use storage for default test"
     echo "  hotfix:            use workspace for hotfix"
     echo "  deploy:            use workspace for deploy"
     echo "  feature:           use workspace for feature"
+    echo "  showmail:          use '--show_mail_body'"
     echo "  sendmail:          use '--enable_sendmail'"
     echo "  clear_datastore:   use '--clear_datastore'"
     echo
@@ -43,6 +44,10 @@ do
 		'feature' )
 			WORKSPACE=$WORKSPACE"-feature"
 			echo "use $WORKSPACE"
+			;;
+		'showmail'|'--show_mail_body' )
+			EXTRA_OPT=$EXTRA_OPT' --show_mail_body=true'
+			echo "use $EXTRA_OPT"
 			;;
 		'sendmail'|'--enable_sendmail' )
 			EXTRA_OPT=$EXTRA_OPT' --enable_sendmail'
@@ -70,7 +75,6 @@ pyenv version
 
 python $GAE_PATH/dev_appserver.py \
 	--host=localhost \
-	--show_mail_body=true \
 	--log_level=debug \
 	--dev_appserver_log_level=debug \
 	--storage_path=$STORAGE_PATH \
