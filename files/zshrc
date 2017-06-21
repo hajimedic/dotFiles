@@ -1,5 +1,9 @@
 ## colors format: http://misc.flogisoft.com/bash/tip_colors_and_formatting
 
+## color list:
+#    $ wget https://github.com/zhengkai/config/raw/master/script/256colors2.pl
+#    $ perl ./256colors2.plttps://gist.github.com/clairvy/566623
+
 setopt prompt_subst
 local p_color_orange=$'\e[38;5;215m'
 # local p_color_reset=$'\e[m'
