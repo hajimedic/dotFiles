@@ -248,14 +248,14 @@ augroup END
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " syntastic setting
-let g:syntastic_python_checkers = ['pylint', 'pep8']
+let g:syntastic_python_checkers = ['pylint', 'pycodestyle']
 let g:syntastic_python_pylint_post_args =
     \ '--msg-template="{path}:{line}:{column}:{C}: [{msg_id}: {symbol}] {msg}"'
 
 " workspaceの中にいる場合
 if matchstr(expand("%:p:h"), "/workspace") == "/workspace"
 	let g:syntastic_python_pylint_exec = $HOME."/workspace/bin/pylint"
-	let g:syntastic_python_pep8_exec = $HOME."/workspace/bin/pep8"
+	let g:syntastic_python_pycodestyle_exec = $HOME."/workspace/bin/pycodestyle"
 endif
 
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
