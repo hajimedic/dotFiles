@@ -128,7 +128,7 @@ case ${OSTYPE} in darwin*)
 		cd -
 	}
 
-	export PATH="/Users/hajimental/.homebrew/opt/gettext/bin:$PATH"
+	export PATH="$HOME/.homebrew/opt/gettext/bin:$PATH"
 
 	# MacVIM
 	# if [ -e /Applications/MacVim.app ]; then
