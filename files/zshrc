@@ -124,7 +124,7 @@ case ${OSTYPE} in darwin*)
 
 	function rainbowstream(){
 		cd $HOME;
-		$HOME/.pyenv/shims/rainbowstream $*;
+		$HOME/.homebrew/bin/rainbowstream $*;
 		cd -
 	}
 
