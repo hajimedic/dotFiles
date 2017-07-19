@@ -15,7 +15,7 @@ reattach-to-user-namespace
 tig
 tmux
 vim
-macvim
+macvim  --with-lua --with-custom-python
 wget
 youtube-dl
 gettext
