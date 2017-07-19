@@ -4,6 +4,7 @@ export LC_CTYPE=ja_JP.UTF-8
 export LC_TIME=en_US.UTF-8
 # export PERL_CPANM_OPT="--mirror ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/"
 export GAE_PATH=$HOME/workspace/GAE_SDK/google_appengine
+# export GAE_PATH=$HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
 
 
 # for Mac OS X

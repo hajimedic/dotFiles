@@ -49,6 +49,9 @@ compinit -u
 if [ -e $HOME/.homebrew/etc/bash_completion.d ]; then
 	source $HOME/.homebrew/etc/bash_completion.d/tig-completion.bash
 fi
+if [-e $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
+	source $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
 
 zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=31'
 zstyle ':completion:*:default' menu select=1
