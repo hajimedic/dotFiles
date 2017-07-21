@@ -158,13 +158,6 @@ call dein#add('tpope/vim-markdown')
 call dein#end()
 
 
-" markdown setting
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-  autocmd BufNewFile,BufRead *.{rest} set filetype=rst
-augroup END
-
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " syntastic setting
