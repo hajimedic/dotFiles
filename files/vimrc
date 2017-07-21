@@ -9,14 +9,12 @@ set autowrite
 set list
 set hlsearch
 set laststatus=2
-"set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%c%V%8P
+" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%c%V%8P
 set cmdheight=2
 set lcs=tab:.\ ,trail:-,eol:↲
-" set lcs=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
-"set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis
 set wildmode=list:longest,full
 set ignorecase
@@ -28,31 +26,18 @@ set noswapfile
 " since ver.8.0
 set breakindent
 
-autocmd FileType python setlocal tabstop=4 noexpandtab
-
-"undo
+" undo
 if has('persistent_undo')
-	set undodir=~/.vim/undo
-	set undofile
+    set undodir=~/.vim/undo
+    set undofile
 endif
-"backup
+" backup
 set backupdir=~/.vim/tmp
 
-"Use grep Command, when open cwindow"
+" Use grep Command, when open cwindow"
 autocmd QuickFixCmdPost *grep* cwindow
 
-"color settings
-syntax on
-source ~/.vim/highlight.vim
-
-"mysql
-"autocmd BufRead *.sql set filetype=mysql
-
-"コーディング時のみ80字制限をつける
-autocmd FileType sh,cpp,perl,vim,ruby,python,javascript,html,haskell,scheme set colorcolumn=80,100
-"shell の時はタブはスペースで
-autocmd FileType sh set expandtab
-"カッコ補完
+" カッコ補完
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
@@ -97,10 +82,10 @@ nnoremap <S-Right> <C-w>><CR>
 nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 
-"remap key Ctrl-c to ESC
+" remap key Ctrl-c to ESC
 inoremap <C-c> <ESC>
 
-"pairing the parentheses
+" pairing the parentheses
 nnoremap <Tab> %
 nnoremap [ %
 nnoremap ] %
@@ -111,97 +96,35 @@ vnoremap ] %
 noremap <C-[><C-[> :noh<CR>
 noremap <SPACE> i<SPACE><ESC>l
 
-"US keyboard Setting
+" US keyboard Setting
 noremap ; :
 noremap : ;
 
 " :e などでファイルを開く際にフォルダが存在しない場合は自動作成
 function! s:mkdir(dir, force)
-	if !isdirectory(a:dir) && (a:force || input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-		call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-	endif
+    if !isdirectory(a:dir) && (a:force || input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+        call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
 endfunction
 autocmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 
 if has('lua')
-	" NeoCompleteを有効にする
-	let g:neocomplete#enable_at_startup = 1
-	" 補完が自動で開始される文字数
-	let g:neocomplete#auto_completion_start_length = 3
-	" smart case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
-	let g:neocomplete#enable_smart_case = 1
-	" シンタックスをキャッシュするときの最小文字長を3に
-	let g:neocomplete#min_syntax_length = 3
-	" 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
-	let g:neocomplete#enable_auto_select = 0
-	"ポップアップメニューで表示される候補の数。初期値は100
-	let g:neocomplete#max_list = 20
+    " NeoCompleteを有効にする
+    let g:neocomplete#enable_at_startup = 1
+    " 補完が自動で開始される文字数
+    let g:neocomplete#auto_completion_start_length = 3
+    " smart case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
+    let g:neocomplete#enable_smart_case = 1
+    " シンタックスをキャッシュするときの最小文字長を3に
+    let g:neocomplete#min_syntax_length = 3
+    " 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
+    let g:neocomplete#enable_auto_select = 0
+    "ポップアップメニューで表示される候補の数。初期値は100
+    let g:neocomplete#max_list = 20
 end
 
-"use EnhCommentify
+" use EnhCommentify
 helptags ~/.vim/doc
-
-" "use NeoBundle
-" set nocompatible
-" filetype on
-"
-" if has('vim_starting')
-" 	" Required:
-" 	set runtimepath+=~/.vim/bundle/neobundle.vim
-" endif
-" " Required:
-" call neobundle#begin(expand('~/.vim/bundle/'))
-"
-" " originalrepos on github
-" " Required:
-" NeoBundle 'Shougo/neobundle.vim'
-" NeoBundle 'VimClojure'
-" NeoBundle 'Shougo/unite.vim'
-" if has('lua')
-" 	NeoBundle 'Shougo/neocomplete.vim'
-" endif
-" NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'jpalardy/vim-slime'
-" NeoBundle 'Shougo/vimfiler'
-" NeoBundle 'itchyny/lightline.vim'
-" NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'sjl/gundo.vim'
-" NeoBundle 'tomtom/tcomment_vim'
-" " NeoBundle 'taglist.vim'
-" NeoBundle 'LeafCage/yankround.vim'
-" NeoBundle 'Shougo/vimproc', {
-"       \ 'build' : {
-"       \     'windows' : 'make -f make_mingw32.mak',
-"       \     'cygwin' : 'make -f make_cygwin.mak',
-"       \     'mac' : 'make -f make_mac.mak',
-"       \     'unix' : 'make -f make_unix.mak',
-"       \    },
-"       \ }
-" NeoBundle 'Shougo/vimshell.vim'
-" " NeoBundle 'ejholmes/vim-forcedotcom'
-"
-" NeoBundle 'davidhalter/jedi-vim'
-" NeoBundleLazy "lambdalisue/vim-django-support", {
-"       \ "depends": ['davidhalter/jedi-vim'],
-"       \ "autoload": {
-"       \     "filetypes": ["python", "python3", "htmldjango"]
-"       \    },
-"       \ }
-" NeoBundleLazy "lambdalisue/vim-pyenv", {
-"       \ "depends": ['davidhalter/jedi-vim'],
-"       \ "autoload": {
-"       \     "filetypes": ["python", "python3", "htmldjango"]
-"       \    },
-"       \ }
-"
-" call neobundle#end()
-"
-" filetype plugin indent on	 " required!
-" filetype indent on
-"
-" " If there are uninstalled bundles found on startup,
-" " this will conveniently prompt you to install them.
-" NeoBundleCheck
 
 " " use dein.vim
 if &compatible
@@ -215,7 +138,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('vim-scripts/VimClojure')
 call dein#add('Shougo/unite.vim')
 if has('lua')
-	call dein#add('Shougo/neocomplete.vim')
+    call dein#add('Shougo/neocomplete.vim')
 endif
 call dein#add('scrooloose/syntastic')
 call dein#add('jpalardy/vim-slime')
@@ -230,12 +153,9 @@ call dein#add('Shougo/vimshell.vim')
 call dein#add('lambdalisue/vim-django-support')
 call dein#add('lambdalisue/vim-pyenv')
 
-call dein#add('kannokanno/previm')
 call dein#add('tpope/vim-markdown')
 
 call dein#end()
-
-filetype plugin indent on
 
 
 " markdown setting
@@ -254,8 +174,8 @@ let g:syntastic_python_pylint_post_args =
 
 " workspaceの中にいる場合
 if matchstr(expand("%:p:h"), "/workspace") == "/workspace"
-	let g:syntastic_python_pylint_exec = $HOME."/workspace/bin/pylint"
-	let g:syntastic_python_pycodestyle_exec = $HOME."/workspace/bin/pycodestyle"
+    let g:syntastic_python_pylint_exec = $HOME."/workspace/bin/pylint"
+    let g:syntastic_python_pycodestyle_exec = $HOME."/workspace/bin/pycodestyle"
 endif
 
 let g:syntastic_javascript_checkers = ['eslint', 'jshint']
@@ -270,7 +190,7 @@ let g:syntastic_mode_map = {
             \}
 noremap <C-s> :w<CR> :SyntasticCheck<CR>
 
-"unite setting
+" unite setting
 noremap <C-w><C-f> :UniteWithCurrentDir file<CR>
 noremap <C-w><C-b> :Unite buffer<CR>
 noremap <C-w><C-t> :Unite tab<CR>
@@ -281,23 +201,9 @@ set runtimepath+='$HOME/.vim/bundle/unite.vim'
 set runtimepath+='$HOME/.vim/bundle/vimfiler'
 set runtimepath+='$HOME/.vim/bundle/vim-fugitive'
 
-"vimfiler setting
+" vimfiler setting
 noremap <C-w><C-e> :VimFilerExplorer -winwidth=30<CR>
 let g:vimfiler_ignore_pattern = '\%(^\.\|.pyo$\|.mo$\|.pyc$\)'
-
-" " "jedi-vim setting
-" autocmd FileType python setlocal tabstop=4 noexpandtab
-" " "jedi-vim setting (neoconpleteとのコラボ用)
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-
-"
-" if !exists('g:neocomplete#force_omni_input_patterns')
-" 	let g:neocomplete#force_omni_input_patterns = {}
-" endif
-" " let g:neocomplete#force_omni_input_patterns.python = '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-" " let g:neocomplete#force_omni_input_patterns.python = '\h\w*\|[^. \t]\.\w*'
-" let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
 
 
 " tcomment_vim setting
@@ -312,7 +218,7 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_WinWidth = 50
 noremap tt :TlistToggle<CR>
 
-"yankroud setting
+" yankroud setting
 let g:yankround_dir = '~/.vim/cache/yankround'
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
@@ -325,93 +231,111 @@ xmap gp <Plug>(yankround-gp)
 
 " インサートモードに入った時にカーソル行(列)の色を変更する
 augroup vimrc_change_cursorline_color
-	autocmd!
-	autocmd InsertEnter * highlight CursorLine ctermbg=22 guibg=#00875f | highlight CursorColumn ctermbg=22 guibg=#00875f
-	autocmd InsertLeave * highlight CursorLine ctermbg=235 guibg=Grey20 | highlight CursorColumn ctermbg=235 guibg=Grey20
+    autocmd!
+    autocmd InsertEnter * highlight CursorLine ctermbg=22 guibg=#00875f | highlight CursorColumn ctermbg=22 guibg=#00875f
+    autocmd InsertLeave * highlight CursorLine ctermbg=235 guibg=Grey20 | highlight CursorColumn ctermbg=235 guibg=Grey20
 augroup END
 
 " アクティブウィンドウに限りカーソル行(列)を強調する
 augroup vimrc_set_cursorline_only_active_window
-	autocmd!
-	autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline | setlocal cursorcolumn
-	autocmd WinLeave * setlocal nocursorline | setlocal nocursorcolumn
+    autocmd!
+    autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline | setlocal cursorcolumn
+    autocmd WinLeave * setlocal nocursorline | setlocal nocursorcolumn
 augroup END
 
-"lightline setting
+" lightline setting
 let g:lightline = {
-	\ 'colorscheme': 'wombat',
-	\ 'mode_map': { 'c': 'NORMAL' },
-	\ 'active': {
-	\	'left': [ [ 'mode', 'paste' ], ['pyenv'], [ 'fugitive', 'filename' ] ]
-	\ },
-	\ 'inactive': {
-	\	'left': [ [ 'fugitive', 'filename' ] ]
-	\ },
-	\ 'tab': {
-	\	'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
-	\	'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
-	\ },
-	\ 'component_function': {
-	\	'modified': 'MyModified',
-	\	'readonly': 'MyReadonly',
-	\	'fugitive': 'MyFugitive',
-	\	'filename': 'MyFilename',
-	\	'fileformat': 'MyFileformat',
-	\	'filetype': 'MyFiletype',
-	\	'fileencoding': 'MyFileencoding',
-	\	'mode': 'MyMode',
-	\	'pyenv': 'pyenv#statusline#component',
-	\ },
-	\ 'tab_component_function': {
-	\	'filename': 'lightline#tab#filename',
-	\	'modified': 'lightline#tab#modified',
-	\	'readonly': 'TabReadonly',
-	\	'tabnum': 'lightline#tab#tabnum',
-	\ },
-	\ }
+    \ 'colorscheme': 'wombat',
+    \ 'mode_map': { 'c': 'NORMAL' },
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], ['pyenv'], [ 'fugitive', 'filename' ] ]
+    \ },
+    \ 'inactive': {
+    \   'left': [ [ 'fugitive', 'filename' ] ]
+    \ },
+    \ 'tab': {
+    \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
+    \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
+    \ },
+    \ 'component_function': {
+    \   'modified': 'MyModified',
+    \   'readonly': 'MyReadonly',
+    \   'fugitive': 'MyFugitive',
+    \   'filename': 'MyFilename',
+    \   'fileformat': 'MyFileformat',
+    \   'filetype': 'MyFiletype',
+    \   'fileencoding': 'MyFileencoding',
+    \   'mode': 'MyMode',
+    \   'pyenv': 'pyenv#statusline#component',
+    \ },
+    \ 'tab_component_function': {
+    \   'filename': 'lightline#tab#filename',
+    \   'modified': 'lightline#tab#modified',
+    \   'readonly': 'TabReadonly',
+    \   'tabnum': 'lightline#tab#tabnum',
+    \ },
+    \ }
 
 function! MyModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
 endfunction
 
 function! TabReadonly(n)
-	let winnr = tabpagewinnr(a:n)
-	return gettabwinvar(a:n, winnr, '&readonly') ? '⭤' : ''
+    let winnr = tabpagewinnr(a:n)
+    return gettabwinvar(a:n, winnr, '&readonly') ? '⭤' : ''
 endfunction
 
 function! MyFilename()
-	return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-		\ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-		\ &ft == 'unite' ? unite#get_status_string() : 
-		\ &ft == 'vimshell' ? vimshell#get_status_string() :
-		\ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
-		\ ('' != MyModified() ? ' ' . MyModified() : '')
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+        \ &ft == 'unite' ? unite#get_status_string() : 
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-	if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-		let _ = fugitive#head()
-		return strlen(_) ? '⭠ '._ : ''
-	endif
-	return ''
+    if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+        let _ = fugitive#head()
+        return strlen(_) ? '⭠ '._ : ''
+    endif
+    return ''
 endfunction
 
 function! MyFileformat()
-	return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
-	return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+
+
+
+augroup file_type_settings
+    autocmd!
+    autocmd FileType python setlocal tabstop=4 noexpandtab
+
+    " コーディング時のみ80字制限をつける
+    autocmd FileType sh,cpp,perl,vim,ruby,python,javascript,html,haskell,scheme set colorcolumn=80,100
+    " タブをスペースにするやつ
+    autocmd FileType sh,zsh,vim,html,xhtml,htmldjango set expandtab
+augroup END
+
+filetype plugin indent on
+
+" color settings
+syntax on
+source ~/.vim/highlight.vim
