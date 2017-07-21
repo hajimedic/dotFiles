@@ -14,13 +14,15 @@ set cmdheight=2
 set lcs=tab:.\ ,trail:-,eol:↲
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set fileencodings=utf-8,euc-jp,sjis
 set wildmode=list:longest,full
 set ignorecase
 set t_Co=256
 set showtabline=2
 set clipboard=unnamed
+
+set colorcolumn=80,100
 
 set noswapfile
 " since ver.8.0
@@ -315,17 +317,6 @@ function! MyMode()
     return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-
-
-augroup file_type_settings
-    autocmd!
-    autocmd FileType python setlocal tabstop=4 noexpandtab
-
-    " コーディング時のみ80字制限をつける
-    autocmd FileType sh,cpp,perl,vim,ruby,python,javascript,html,haskell,scheme set colorcolumn=80,100
-    " タブをスペースにするやつ
-    autocmd FileType sh,zsh,vim,html,xhtml,htmldjango set expandtab
-augroup END
 
 filetype plugin indent on
 
