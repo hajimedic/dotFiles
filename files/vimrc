@@ -11,7 +11,8 @@ set hlsearch
 set laststatus=2
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%c%V%8P
 set cmdheight=2
-set lcs=tab:.\ ,trail:-,eol:↲
+set lcs=tab:.\ ,trail:-,eol:$
+" set lcs=tab:.\ ,trail:-,eol:↲
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -25,8 +26,11 @@ set clipboard=unnamed
 set colorcolumn=80,100
 
 set noswapfile
+
+set imdisable  "see :h imdisable "
 " since ver.8.0
 set breakindent
+set showbreak=↳\ 
 
 " undo
 if has('persistent_undo')
@@ -180,8 +184,8 @@ let g:syntastic_javascript_eslint_exec = 'eslint'
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_mode_map = {
             \ 'mode': 'active',
-            \ 'active_filetypes': ['php', 'sh', 'vim'],
-            \ 'passive_filetypes': ['python', 'html', 'javascript']
+            \ 'active_filetypes': ['php', 'sh', 'zsh', 'vim'],
+            \ 'passive_filetypes': ['python', 'html', 'xhtml', 'htmldjango', 'javascript']
             \}
 noremap <C-s> :w<CR> :SyntasticCheck<CR>
 
@@ -243,7 +247,10 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], ['pyenv'], [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'mode', 'paste' ], ['pyenv'], [ 'fugitive', 'filename' ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'inactive': {
     \   'left': [ [ 'fugitive', 'filename' ] ]
