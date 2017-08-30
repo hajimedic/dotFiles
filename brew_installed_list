@@ -19,3 +19,5 @@ macvim  --with-lua --with-custom-python
 wget
 youtube-dl
 gettext
+
+ricty --with-powerline (tap sanemat/font)

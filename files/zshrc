@@ -46,7 +46,7 @@ autoload -U compinit
 compinit -u
 
 # zsh completion になってないやつ
-if [ -e $HOME/.homebrew/etc/bash_completion.d ]; then
+if [ -e $HOME/.homebrew/etc/bash_completion.d/tig-completion.bash ]; then
     source $HOME/.homebrew/etc/bash_completion.d/tig-completion.bash
 fi
 if [ -e $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]; then
