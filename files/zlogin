@@ -1,5 +1,7 @@
-export login_date="`date +%a\ %h\ %d\ %H:%M`"
-export login_sec=`date +%s`
+if [[ ! -z $TTY ]]; then
+    export login_date="`date +%a\ %h\ %d\ %H:%M`"
+    export login_sec=`date +%s`
 
-LOGTEMP=/var/tmp/.last_log_$login_sec
-echo $TTY'\t'$login_date '-' > $LOGTEMP
+    LOGTEMP=/var/tmp/.last_log_$login_sec
+    echo $TTY'\t'$login_date '-' > $LOGTEMP
+fi

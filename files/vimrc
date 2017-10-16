@@ -166,7 +166,7 @@ call dein#end()
 let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " syntastic setting
-let g:syntastic_python_checkers = ['pylint', 'pycodestyle']
+let g:syntastic_python_checkers = ['pycodestyle', 'pylint',]
 let g:syntastic_python_pylint_post_args =
     \ '--msg-template="{path}:{line}:{column}:{C}: [{msg_id}: {symbol}] {msg}"'
 
