@@ -78,7 +78,9 @@ python $GAE_PATH/dev_appserver.py \
 	--log_level=debug \
 	--dev_appserver_log_level=debug \
 	--storage_path=$STORAGE_PATH \
-    --watcher_ignore_re='.*/(docs|static)/.*' \
+    --watcher_ignore_re='(?!.*README\.md)' \
 	$WORKSPACE \
 	$WORKSPACE/backend*.yaml \
 	$EXTRA_OPT
+
+    # --watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*' \
