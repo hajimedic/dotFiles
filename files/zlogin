@@ -5,3 +5,7 @@ if [[ ! -z $TTY ]]; then
     LOGTEMP=/var/tmp/.last_log_$login_sec
     echo $TTY'\t'$login_date '-' > $LOGTEMP
 fi
+
+# -type f: specificate type file (not directory)
+# -mtime +1: file updated(datetime) filter
+find /var/tmp/ -name ".last_log_*" -type f -mtime +1 -exec rm -f {} \;
