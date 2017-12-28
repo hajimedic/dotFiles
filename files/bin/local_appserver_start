@@ -8,6 +8,7 @@ NAME=`echo $NAME_BY_BASE64 | base64 -D`
 
 STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/$NAME
+BACKEND_YAML=$WORKSPACE/backend*.yaml
 EXTRA_OPT=''
 
 usage() {
@@ -18,6 +19,8 @@ usage() {
     echo "  hotfix:            use workspace for hotfix"
     echo "  deploy:            use workspace for deploy"
     echo "  feature:           use workspace for feature"
+    echo "  navitime:          use workspace for navitime-proxy"
+    echo "  timestamp:         use workspace for timestamp"
     echo "  showmail:          use '--show_mail_body'"
     echo "  sendmail:          use '--enable_sendmail'"
     echo "  clear_datastore:   use '--clear_datastore'"
@@ -43,6 +46,16 @@ do
 			;;
 		'feature' )
 			WORKSPACE=$WORKSPACE"-feature"
+			echo "use $WORKSPACE"
+			;;
+		'navitime' )
+			WORKSPACE=$WORKSPACE"-navitime-proxy"
+            BACKEND_YAML=''
+			echo "use $WORKSPACE"
+			;;
+		'timestamp' )
+			WORKSPACE=$WORKSPACE"-timestamp"
+            BACKEND_YAML=''
 			echo "use $WORKSPACE"
 			;;
 		'showmail'|'--show_mail_body' )
@@ -80,7 +93,7 @@ python $GAE_PATH/dev_appserver.py \
 	--storage_path=$STORAGE_PATH \
     --watcher_ignore_re='(?!.*README\.md)' \
 	$WORKSPACE \
-	$WORKSPACE/backend*.yaml \
+	$BACKEND_YAML \
 	$EXTRA_OPT
 
     # --watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*' \
