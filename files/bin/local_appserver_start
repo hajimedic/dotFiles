@@ -10,6 +10,7 @@ STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/$NAME
 BACKEND_YAML=$WORKSPACE/backend*.yaml
 EXTRA_OPT=''
+WATCHER_IGNORE="--watcher_ignore_re='(?!.*README\.md)'"
 
 usage() {
     echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [showmail] [sendmail] [clear_datastore]"
@@ -55,6 +56,7 @@ do
 			;;
 		'timestamp' )
 			WORKSPACE=$WORKSPACE"-timestamp"
+            WATCHER_IGNORE="--watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*'"
             BACKEND_YAML=''
 			echo "use $WORKSPACE"
 			;;
@@ -91,9 +93,8 @@ python $GAE_PATH/dev_appserver.py \
 	--log_level=debug \
 	--dev_appserver_log_level=debug \
 	--storage_path=$STORAGE_PATH \
-    --watcher_ignore_re='(?!.*README\.md)' \
+    $WATCHER_IGNORE \
 	$WORKSPACE \
 	$BACKEND_YAML \
 	$EXTRA_OPT
 
-    # --watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*' \
