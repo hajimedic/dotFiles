@@ -40,16 +40,19 @@ do
 			;;
 		'hotfix' )
 			WORKSPACE=$WORKSPACE"-hotfix"
+            BACKEND_YAML=$WORKSPACE/backend*.yaml
 			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
 		'dep'|'deploy' )
 			WORKSPACE=$WORKSPACE"-deploy"
+            BACKEND_YAML=$WORKSPACE/backend*.yaml
 			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
 		'feature' )
 			WORKSPACE=$WORKSPACE"-feature"
+            BACKEND_YAML=$WORKSPACE/backend*.yaml
 			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
