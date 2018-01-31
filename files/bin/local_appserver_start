@@ -35,18 +35,22 @@ do
 	case $OPT in
 		'def'|'default' )
 			STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
+			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo 'default option'
 			;;
 		'hotfix' )
 			WORKSPACE=$WORKSPACE"-hotfix"
+			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
 		'dep'|'deploy' )
 			WORKSPACE=$WORKSPACE"-deploy"
+			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
 		'feature' )
 			WORKSPACE=$WORKSPACE"-feature"
+			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo "use $WORKSPACE"
 			;;
 		'navitime' )
