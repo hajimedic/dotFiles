@@ -8,7 +8,7 @@ NAME=`echo $NAME_BY_BASE64 | base64 -D`
 
 STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/$NAME
-BACKEND_YAML=$WORKSPACE/backend*.yaml
+BACKEND_YAML=''
 EXTRA_OPT=''
 WATCHER_IGNORE="--watcher_ignore_re='(?!.*README\.md)'"
 
@@ -35,37 +35,27 @@ do
 	case $OPT in
 		'def'|'default' )
 			STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
-			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
+			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			echo 'default option'
 			;;
 		'hotfix' )
 			WORKSPACE=$WORKSPACE"-hotfix"
-            BACKEND_YAML=$WORKSPACE/backend*.yaml
-			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			echo "use $WORKSPACE"
+			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			;;
 		'dep'|'deploy' )
 			WORKSPACE=$WORKSPACE"-deploy"
-            BACKEND_YAML=$WORKSPACE/backend*.yaml
-			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			echo "use $WORKSPACE"
+			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			;;
 		'feature' )
 			WORKSPACE=$WORKSPACE"-feature"
-            BACKEND_YAML=$WORKSPACE/backend*.yaml
-			EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			echo "use $WORKSPACE"
+			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
 			;;
 		'navitime' )
 			WORKSPACE=$WORKSPACE"-navitime-proxy"
-            BACKEND_YAML=''
-			echo "use $WORKSPACE"
 			;;
 		'timestamp' )
 			WORKSPACE=$WORKSPACE"-timestamp"
             WATCHER_IGNORE="--watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*'"
-            BACKEND_YAML=''
-			echo "use $WORKSPACE"
 			;;
 		'showmail'|'--show_mail_body' )
 			EXTRA_OPT=$EXTRA_OPT' --show_mail_body'
@@ -91,6 +81,13 @@ do
 			;;
 	esac
 done
+
+echo "use $WORKSPACE"
+
+if ls $WORKSPACE/backend*.yaml > /dev/null 2>&1; then
+    BACKEND_YAML=$WORKSPACE/backend*.yaml
+    echo "use $BACKEND_YAML"
+fi
 
 cd $HOME/workspace
 pyenv version
