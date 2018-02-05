@@ -58,11 +58,11 @@ do
             WATCHER_IGNORE="--watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*'"
 			;;
 		'showmail'|'--show_mail_body' )
-			EXTRA_OPT=$EXTRA_OPT' --show_mail_body'
+			EXTRA_OPT=$EXTRA_OPT' --show_mail_body=true'
 			echo "use $EXTRA_OPT"
 			;;
 		'sendmail'|'--enable_sendmail' )
-			EXTRA_OPT=$EXTRA_OPT' --enable_sendmail'
+			EXTRA_OPT=$EXTRA_OPT' --enable_sendmail=true'
 			echo "use $EXTRA_OPT"
 			;;
 		'clear_datastore'|'--clear_datastore' )
@@ -95,7 +95,7 @@ pyenv version
 python $GAE_PATH/dev_appserver.py \
 	--host=localhost \
 	--log_level=debug \
-	--dev_appserver_log_level=debug \
+	--dev_appserver_log_level=info \
 	--storage_path=$STORAGE_PATH \
     $WATCHER_IGNORE \
 	$WORKSPACE \
