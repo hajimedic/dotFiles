@@ -6,6 +6,7 @@ files/vim/undo/*
 files/vim/cache/*
 files/vim/tmp/*
 files/vim/.netrwhist
+files/bin/misspell
 !.gitkeep
 
 *.pyc
