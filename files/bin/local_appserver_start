@@ -97,6 +97,7 @@ python $GAE_PATH/dev_appserver.py \
 	--host=localhost \
 	--log_level=debug \
 	--dev_appserver_log_level=info \
+    --enable_console=true \
 	--storage_path=$STORAGE_PATH \
     $WATCHER_IGNORE \
 	$WORKSPACE \
