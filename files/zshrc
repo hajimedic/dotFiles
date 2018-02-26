@@ -21,7 +21,7 @@ local p_cdir_end_color_fg=$'%{\e[38;5;17m%}'
 # local p_cdir="$p_cdir_color_bg%F{blue}⮀%f %~ $p_color_reset_bg$p_cdir_end_color_fg"
 # local p_cdir="$p_cdir_color_bg%F{blue}⮀%f %d $p_color_reset_bg$p_cdir_end_color_fg"
 # local p_cdir="%F{blue}⮀%f %d $p_cdir_end_color_fg"
-local p_cdir="%F{blue}◤  %F{green}%d%f$p_cdir_end_color_fg"
+local p_cdir="%F{magenta}╥ %F{green}%d%f$p_cdir_end_color_fg"
 local p_cdir_full="[%F{green}%~%f]"
 # local p_cdir_end="⮀"$'\n'
 local p_cdir_end=""$'\n'
@@ -30,7 +30,7 @@ local p_cdir_end=""$'\n'
 
 local p_host="$p_color_orange%m$p_color_reset_fg"
 local p_user="$p_color_orange%n$p_color_reset_fg"
-local p_info="$p_color_reset_all%F{red}⮑ %f $p_user@$p_host"
+local p_info="$p_color_reset_all%F{magenta}╚  %f$p_user@$p_host"
 # local p_info="%F{red}♺ %f $p_user@$p_host"
 local p_mark="%B%(!,#,$)%b"
 # local p_mark="%#"
