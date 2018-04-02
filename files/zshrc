@@ -132,12 +132,6 @@ case ${OSTYPE} in darwin*)
         fi
     }
 
-    function rainbowstream(){
-        cd $HOME;
-        $HOME/.homebrew/bin/rainbowstream $*;
-        cd -
-    }
-
     export PATH="$HOME/.homebrew/opt/gettext/bin:$PATH"
 
     # MacVIM

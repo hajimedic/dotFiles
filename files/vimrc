@@ -254,6 +254,10 @@ let g:lightline = {
     \ 'inactive': {
     \   'left': [ [ 'fugitive', 'filename' ] ]
     \ },
+    \ 'tabline': {
+    \   'left': [ [ 'tabs' ] ],
+    \   'right': [ [ 'cfi' ] ]
+    \ },
     \ 'tab': {
     \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
     \   'inactive': [ 'tabnum', 'readonly', 'filename', 'modified' ]
@@ -268,9 +272,10 @@ let g:lightline = {
     \   'fileencoding': 'MyFileencoding',
     \   'mode': 'MyMode',
     \   'pyenv': 'pyenv#statusline#component',
+    \   'cfi': 'StlCurrentFuncInfo',
     \ },
     \ 'tab_component_function': {
-    \   'filename': 'lightline#tab#filename',
+    \   'filename': 'LightlineTabFilename',
     \   'modified': 'lightline#tab#modified',
     \   'readonly': 'TabReadonly',
     \   'tabnum': 'lightline#tab#tabnum',
@@ -283,6 +288,18 @@ endfunction
 
 function! MyReadonly()
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! StlCurrentFuncInfo()
+  let info = fnamemodify(getcwd(), ":~") . ' '
+  return info
+endfunction
+
+function! LightlineTabFilename(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let _ = pathshorten(expand('#'.buflist[winnr - 1].':f'))
+  return _ !=# '' ? _ : '[No Name]'
 endfunction
 
 function! TabReadonly(n)

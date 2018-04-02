@@ -1,8 +1,8 @@
 " syntax on
 source ~/.vimrc
 
-set columns=220
-set lines=80
+set columns=160
+set lines=140
 set background=dark
 
 set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27
