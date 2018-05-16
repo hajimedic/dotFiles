@@ -1,45 +1,50 @@
 [user]
-	name = h-oizumi
-	email = h.oizumi@gigei.jp
+    name = h-oizumi
+    email = h.oizumi@gigei.jp
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [core]
-	editor = vim
-	pager = LESS=-r less
-	autocrlf = input
+    editor = vim
+    pager = LESS=-r less
+    autocrlf = input
 
 [tig "bind"]
-	generic = g move-first-line
-	generic = G move-last-line
-	generic = <Ctrl-f> move-page-down
-	generic = <Ctrl-b> move-page-up
+    generic = g move-first-line
+    generic = G move-last-line
+    generic = <Ctrl-f> move-page-down
+    generic = <Ctrl-b> move-page-up
 [alias]
-	ch = checkout
-	st = status
-	di = diff --color-words
-	lo = log --graph --decorate
-	gr = grep --context=2 --line-number
-	ff = merge --ff
-	d1 = diff HEAD~            # HEADから1つ前とdiff
-	d2 = diff HEAD~~           # HEADから2つ前とdiff
-	d3 = diff HEAD~~~          # HEADから3つ前とdiff
-	d4 = diff HEAD~~~~         # HEADから4つ前とdiff
-	d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
-	d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
+    ch = checkout
+    st = status
+    di = diff --color-words
+    lo = log --graph --decorate
+    gr = grep --context=2 --line-number
+    ff = merge --ff
+    d1 = diff HEAD~            # HEADから1つ前とdiff
+    d2 = diff HEAD~~           # HEADから2つ前とdiff
+    d3 = diff HEAD~~~          # HEADから3つ前とdiff
+    d4 = diff HEAD~~~~         # HEADから4つ前とdiff
+    d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
+    d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
+
+    # 特定のコミットが、対象のブランチへ、どのマージコミットで入ってきたかチェックできる
+    # ref https://ja.stackoverflow.com/a/23770
+    find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 [color]
-	ui = true
+    ui = true
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
 [push]
-	default = simple
+    default = simple
 [fetch]
-	prune = true
+    prune = true
 [filter "lfs"]
-	smudge = git-lfs smudge %f
-	required = true
-	clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
+    clean = git-lfs clean %f
 [color "diff"]
-	old = red strike
+    old = red strike
 [gc]
-	auto = 1
+    auto = 1
