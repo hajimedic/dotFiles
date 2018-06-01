@@ -1,4 +1,6 @@
 "GUI
+set background=dark
+
 highlight Comment guifg=#00cc00
 highlight ColorColumn guibg=#442222
 highlight CursorLine gui=underline

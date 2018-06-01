@@ -1,13 +1,16 @@
 " syntax on
 source ~/.vimrc
+source ~/.vim/highlight_gui.vim
 
-set columns=160
+set columns=130
 set lines=140
-set background=dark
 
 set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27
 set guifont=Ricty\ Diminished\ Regular:h13
 " set guitablabel=>%t\ %m
+
+set ambiwidth=double
+set noimdisable
 
 set transparency=10
 " autocmd FocusGained * set background
@@ -16,4 +19,3 @@ set transparency=10
 noremap <C-Tab> :tabnext<CR>
 noremap <C-S-Tab> :tabprevious<CR>
 
-source ~/.vim/highlight_gui.vim
