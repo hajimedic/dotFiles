@@ -206,6 +206,7 @@ add-zsh-hook precmd _update_vcs_info_msg
 # ◣
 # ⮐
 # ⮑
+# ░
 
 ## setting for git-prompt
 # ZSH_THEME_GIT_PROMPT_PREFIX=" ⭠ "
