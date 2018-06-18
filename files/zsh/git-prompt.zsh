@@ -171,7 +171,7 @@ fi
 function _update_vcs_info_msg() {
 	local -a messages
 	local p_git_color_fg=$'%{\e[38;5;39m%}'
-	local p_git_color_bg=$'%{\e[48;5;236m%}'
+	# local p_git_color_bg=$'%{\e[48;5;236m%}'
 	local p_git_end_color_fg=$'%{\e[38;5;236m%}'
 	local git_prompt=""
 

@@ -2,7 +2,7 @@
 source ~/.vimrc
 source ~/.vim/highlight_gui.vim
 
-set columns=130
+set columns=140
 set lines=140
 
 set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27

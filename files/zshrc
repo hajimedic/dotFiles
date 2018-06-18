@@ -14,8 +14,8 @@ local p_color_reset_bg=$'%{\e[49m%}'
 local p_color_reset_fg=$'%{\e[39m%}'
 local p_color_reset_all="$p_color_reset_fg$p_color_reset_bg"
 
-local p_cdir_color_fg=$'%{\e[38;5;15m%}'
-local p_cdir_color_bg=$'%{\e[48;5;17m%}'
+# local p_cdir_color_fg=$'%{\e[38;5;15m%}'
+# local p_cdir_color_bg=$'%{\e[48;5;17m%}'
 local p_cdir_end_color_fg=$'%{\e[38;5;17m%}'
 
 # local p_cdir="$p_cdir_color_bg%F{blue}⮀%f %~ $p_color_reset_bg$p_cdir_end_color_fg"
