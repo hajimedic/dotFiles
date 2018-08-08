@@ -10,8 +10,9 @@ STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/$NAME
 BACKEND_YAML=''
 EXTRA_OPT=''
-# WATCHER_IGNORE="--watcher_ignore_re='(?!.*README\.md)'"
-WATCHER_IGNORE="--watcher_ignore_re='.*/(apps|bin|docs|etc|fasti|static|tools|vender)/.*'"
+# WATCHER_IGNORE="--watcher_ignore_re=(?!.*README\.md)"
+# WATCHER_IGNORE="--watcher_ignore_re=(?!.*rocro\.yaml)"
+WATCHER_IGNORE="--watcher_ignore_re=.*/(apps|bin|docs|etc|fasti|static|tools|vender)/.*"
 
 usage() {
     echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [showmail] [sendmail] [clear_datastore]"
@@ -97,9 +98,9 @@ python $GAE_PATH/dev_appserver.py \
 	--host=localhost \
 	--log_level=debug \
 	--dev_appserver_log_level=info \
-    --enable_console=true \
+	--enable_console=true \
 	--storage_path=$STORAGE_PATH \
-    $WATCHER_IGNORE \
+	$WATCHER_IGNORE \
 	$WORKSPACE \
 	$BACKEND_YAML \
 	$EXTRA_OPT
