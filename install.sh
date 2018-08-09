@@ -2,7 +2,7 @@
 setopt EXTENDED_GLOB
 for filepath in $HOME/.dotFiles/files/*; do
 	local filename=${filepath:t}
-    if [ -e $HOME/.$filename]; then
+    if [ -e $HOME/.$filename ]; then
         mv $HOME/.$filename $HOME/.$filename.bak
     fi
 	ln -snfv $filepath $HOME/.$filename
