@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 cd $HOME
 echo "Install homebrew to ~/.homebrew"
 mkdir .homebrew
