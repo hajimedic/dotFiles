@@ -12,7 +12,7 @@ set guifont=x14y24pxHeadUpDaisy:h13
 " set guitablabel=>%t\ %m
 
 set ambiwidth=double
-set noimdisable
+" set noimdisable
 
 set transparency=10
 " autocmd FocusGained * set background
