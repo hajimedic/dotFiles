@@ -57,7 +57,7 @@ do
 			;;
 		'timestamp' )
 			WORKSPACE=$WORKSPACE"-timestamp"
-            WATCHER_IGNORE="--watcher_ignore_re='.*/(docs|static|tools|vender|etc|bin)/.*'"
+            WATCHER_IGNORE="--watcher_ignore_re=.*/(docs|static|tools|vender|etc|bin)/.*"
 			;;
 		'showmail'|'--show_mail_body' )
 			EXTRA_OPT=$EXTRA_OPT' --show_mail_body=true'
