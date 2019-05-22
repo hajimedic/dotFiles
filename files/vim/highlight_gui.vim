@@ -35,4 +35,4 @@ highlight djangoFilter guifg=#ccaa88
 highlight djangoTagBlock guifg=#eeccdd
 highlight djangoVarBlock guifg=#eeccdd
 
-highlight LightlineLeft_tabline_tabsel guifg=#00cc00
+highlight LightlineLeft_tabline_tabsel guifg=#00cccc
