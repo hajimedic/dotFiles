@@ -6,7 +6,7 @@ set columns=140
 set lines=140
 
 set guioptions=c  " see guipotions http://vimwiki.net/?%27guioptions%27
-set guifontwide=Ricty\ Diminished\ Regular:h13
+set guifontwide=HackGen\ Regular:h12
 " set guifont=Ricty\ Diminished\ Regular:h13
 set guifont=x14y24pxHeadUpDaisy:h13
 " set guitablabel=>%t\ %m
