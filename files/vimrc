@@ -240,6 +240,11 @@ augroup vimrc_set_cursorline_only_active_window
 augroup END
 
 " lightline setting
+let s:p = g:lightline#colorscheme#wombat#palette
+let s:p.tabline.left = [ [ '#999999', '#444444', 7, 238, '' ] ]
+let s:p.tabline.tabsel = [ [ '#00ffff', '#000000', 6, 0, 'bold' ] ]
+unlet s:p
+
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'mode_map': { 'c': 'NORMAL' },
