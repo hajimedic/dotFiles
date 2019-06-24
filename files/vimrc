@@ -35,6 +35,8 @@ set foldlevel=100
 set breakindent
 set showbreak=↳\ 
 
+let g:python_recommended_style = 0
+
 " undo
 if has('persistent_undo')
     set undodir=~/.vim/undo
@@ -158,7 +160,6 @@ call dein#add('sjl/gundo.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('LeafCage/yankround.vim')
 call dein#add('Shougo/vimproc', {'build': 'make'})
-call dein#add('Shougo/vimshell.vim')
 call dein#add('lambdalisue/vim-django-support')
 call dein#add('lambdalisue/vim-pyenv')
 
@@ -167,7 +168,6 @@ call dein#add('tpope/vim-markdown')
 call dein#end()
 
 
-let g:previm_open_cmd = 'open -a Google\ Chrome'
 
 " syntastic setting
 let g:syntastic_python_checkers = ['pycodestyle', 'pylint',]
@@ -314,7 +314,6 @@ function! MyFilename()
     return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
         \ &ft == 'unite' ? unite#get_status_string() : 
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
         \ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
