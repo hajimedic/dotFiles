@@ -84,6 +84,7 @@ alias ping="ping -t 3"
 alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
+alias rainbowstream="cd $HOME;rainbowstream;cd -;"
 
 setopt hist_ignore_dups
 setopt share_history
