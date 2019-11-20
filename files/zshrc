@@ -41,6 +41,13 @@ if [[ -z ${SSH_CLIENT} ]]; then
 else
     local p_remote="[%F{green}SSH%f]"
 fi
+
+# 環境変数 PIPENV_ACTIVE があるかチェックする
+if [[ -z ${PIPENV_ACTIVE} ]]; then
+    local p_remote=""
+else
+    local p_remote="[%F{green}PIPENV%f]"
+fi
 local p_base="$p_info$p_remote:$p_mark "
 PROMPT=$p_cdir$p_cdir_end$p_base
 source $HOME/.zsh/git-prompt.zsh
