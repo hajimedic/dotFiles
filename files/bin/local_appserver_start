@@ -7,7 +7,7 @@ NAME_BY_BASE64='cmFrdW1vCg=='
 NAME=`echo $NAME_BY_BASE64 | base64 -D`
 
 STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
-WORKSPACE=$HOME/workspace/$NAME
+WORKSPACE=$HOME/workspace/
 BACKEND_YAML=''
 EXTRA_OPT=''
 WATCHER_IGNORE="--watcher_ignore_re=(?!.*README\.md)"
@@ -34,60 +34,65 @@ usage() {
 ####### python 2.7 #########
 for OPT in $@
 do
-	case $OPT in
-		'def'|'default' )
-			STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
-			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			echo 'default option'
-			;;
-		'hotfix' )
-			WORKSPACE=$WORKSPACE"-hotfix"
-			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			;;
-		'dep'|'deploy' )
-			WORKSPACE=$WORKSPACE"-deploy"
-			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			;;
-		'feature' )
-			WORKSPACE=$WORKSPACE"-feature"
-			# EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
-			;;
-		'navitime' )
-			WORKSPACE=$WORKSPACE"-navitime-proxy"
-			;;
-		'timestamp' )
-			WORKSPACE=$WORKSPACE"-timestamp"
+    case $OPT in
+        'def'|'default' )
+            STORAGE_PATH=$HOME/workspace/server_storage/dev-storage-default
+            # EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
+            echo 'default option'
+            ;;
+        'hotfix' )
+            NAME=$NAME"-hotfix"
+            # EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
+            ;;
+        'dep'|'deploy' )
+            NAME=$NAME"-deploy"
+            # EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
+            ;;
+        'feature' )
+            NAME=$NAME"-feature"
+            # EXTRA_OPT=$EXTRA_OPT' --automatic_restart false'
+            ;;
+        'navitime' )
+            NAME=$NAME"-navitime-proxy"
+            ;;
+        'timestamp' )
+            NAME=$NAME"-timestamp"
             WATCHER_IGNORE="--watcher_ignore_re=.*/(docs|static|tools|vender|etc|bin)/.*"
-			;;
-		'showmail'|'--show_mail_body' )
-			EXTRA_OPT=$EXTRA_OPT' --show_mail_body=true'
-			echo "use $EXTRA_OPT"
-			;;
-		'sendmail'|'--enable_sendmail' )
-			EXTRA_OPT=$EXTRA_OPT' --enable_sendmail=true'
-			echo "use $EXTRA_OPT"
-			;;
-		'clear_datastore'|'--clear_datastore' )
-			echo 'clear datastore'
-			# EXTRA_OPT=$EXTRA_OPT' --clear_datastore=true'
-			# echo "use $EXTRA_OPT"
-			;;
+            ;;
+        'showmail'|'--show_mail_body' )
+            EXTRA_OPT=$EXTRA_OPT' --show_mail_body=true'
+            echo "use $EXTRA_OPT"
+            ;;
+        'sendmail'|'--enable_sendmail' )
+            EXTRA_OPT=$EXTRA_OPT' --enable_sendmail=true'
+            echo "use $EXTRA_OPT"
+            ;;
+        'appidentity' )
+            # EXTRA_OPT=$EXTRA_OPT' --appidentity_email_address='
+            # EXTRA_OPT=$EXTRA_OPT' --appidentity_private_key_path='
+            echo "use $EXTRA_OPT"
+            ;;
+        'clear_datastore'|'--clear_datastore' )
+            echo 'clear datastore'
+            # EXTRA_OPT=$EXTRA_OPT' --clear_datastore=true'
+            # echo "use $EXTRA_OPT"
+            ;;
         '-h'|'--help'|'help' )
             usage
             exit 1
             ;;
-		* )
+        * )
             echo "$PROGNAME: $1: No such options" 1>&2
-			usage
-			exit 1
-			;;
-	esac
+            usage
+            exit 1
+            ;;
+    esac
 done
 
-echo "use $WORKSPACE"
+echo "use $WORKSPACE$NAME"
 
-if ls $WORKSPACE/backend*.yaml > /dev/null 2>&1; then
-    BACKEND_YAML=$WORKSPACE/backend*.yaml
+if ls $WORKSPACE$NAME/backend*.yaml > /dev/null 2>&1; then
+    BACKEND_YAML=$WORKSPACE$NAME/backend*.yaml
     echo "use $BACKEND_YAML"
 fi
 
@@ -95,13 +100,13 @@ cd $HOME/workspace
 pyenv version
 
 python $GAE_PATH/dev_appserver.py \
-	--host=localhost \
-	--log_level=debug \
-	--dev_appserver_log_level=info \
-	--enable_console=true \
-	--storage_path=$STORAGE_PATH \
-	$WATCHER_IGNORE \
-	$WORKSPACE \
-	$BACKEND_YAML \
-	$EXTRA_OPT
+    --host=localhost \
+    --log_level=debug \
+    --dev_appserver_log_level=info \
+    --enable_console=true \
+    --storage_path=$STORAGE_PATH \
+    $WATCHER_IGNORE \
+    $WORKSPACE$NAME \
+    $BACKEND_YAML \
+    $EXTRA_OPT
 
