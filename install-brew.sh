@@ -3,7 +3,7 @@
 cd $HOME
 echo "Install homebrew to ~/.homebrew"
 mkdir .homebrew
-curl -Lsf http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C ./.homebrew/
+curl -Lsf https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ./.homebrew/
 ls .homebrew/
 
 #  vi ~/.profile  # or .bash_profile etc
@@ -19,7 +19,7 @@ echo $HOMEBREW
 echo "Upgrade git"
 brew install git
 cd /tmp
-git clone http://github.com/mxcl/homebrew.git homebrew
+git clone https://github.com/Homebrew/brew.git homebrew
 mv homebrew/.git ~/.homebrew/
 rm -rf /tmp/homebrew
 
