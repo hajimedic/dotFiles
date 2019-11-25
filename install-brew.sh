@@ -6,14 +6,14 @@ mkdir .homebrew
 curl -Lsf https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ./.homebrew/
 ls .homebrew/
 
-#  vi ~/.profile  # or .bash_profile etc
-echo "Export path to ~/.homebrew/bin"
-
-echo 'export HOMEBREW=~/.homebrew' >> .zprofile
-echo 'export PATH=$HOME/bin:$HOMEBREW/bin:$HOMEBREW/share/python:$PATH' >> .zprofile
-echo 'export MANPATH=$MANPATH:$HOMEBREW/share/man' >> .zprofile
-
-source ~/.zprofile
+#### vi ~/.profile  # or .bash_profile etc
+# echo "Export path to ~/.homebrew/bin"
+# 
+# echo 'export HOMEBREW=~/.homebrew' >> .zprofile
+# echo 'export PATH=$HOME/bin:$HOMEBREW/bin:$HOMEBREW/share/python:$PATH' >> .zprofile
+# echo 'export MANPATH=$MANPATH:$HOMEBREW/share/man' >> .zprofile
+# 
+# source ~/.zprofile
 echo $HOMEBREW
 
 echo "Upgrade git"
