@@ -14,7 +14,6 @@ readline
 reattach-to-user-namespace
 tig
 tmux
-vim
-macvim  --with-lua --with-custom-python
+macvim
 wget
 gettext
