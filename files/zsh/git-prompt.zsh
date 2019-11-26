@@ -183,8 +183,8 @@ function _update_vcs_info_msg() {
 		[[ -n "$vcs_info_msg_1_" ]] && messages+=( "%f${vcs_info_msg_1_}${p_git_color_fg}" )
 		[[ -n "$vcs_info_msg_2_" ]] && messages+=( "%f${vcs_info_msg_2_}${p_git_color_fg}" )
 		[[ -n "$vcs_info_msg_3_" ]] && messages+=( "%F{red}${vcs_info_msg_3_}%f" )
-		# git_prompt="$p_git_color_bg⮀$p_git_color_fg ⭠ ${(j: ⮁:)messages} $p_color_reset_bg$p_git_end_color_fg"
-		git_prompt="$p_git_color_fg ⭠ ${(j: >:)messages} $p_git_end_color_fg"
+		# git_prompt="$p_git_color_bg⮀$p_git_color_fg  ${(j: ⮁:)messages} $p_color_reset_bg$p_git_end_color_fg"
+		git_prompt="$p_git_color_fg ${(j: >:)messages} $p_git_end_color_fg"
 	else;
 		# git_prompt="$p_git_color_bg⮀$p_git_color_fg ⮁ $p_color_reset_bg$p_git_end_color_fg"
 		git_prompt="$p_git_color_fg > $p_git_end_color_fg"
@@ -194,7 +194,7 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 
 ## unicode characters selection
-# ⭠
+# 
 # ⮀
 # ⮁
 # ⮂
