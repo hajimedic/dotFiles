@@ -1,0 +1,9 @@
+*.py[co]
+*.swp
+._*
+*~
+.DS_Store
+*.bak
+
+# pyenv
+.python-version
