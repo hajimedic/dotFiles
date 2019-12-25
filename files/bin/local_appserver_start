@@ -6,6 +6,9 @@ PROGNAME=$(basename $0)
 NAME_BY_BASE64='cmFrdW1vCg=='
 NAME=`echo $NAME_BY_BASE64 | base64 -D`
 
+APP_ID_BY_BASE64='Y2FscGRldgo='
+APP_ID=`echo $APP_ID_BY_BASE64 | base64 -D`
+
 STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/
 BACKEND_YAML=''
@@ -99,8 +102,11 @@ fi
 cd $HOME/workspace
 pyenv version
 
-python $GAE_PATH/dev_appserver.py \
-    --host=localhost \
+# python $GAE_PATH/dev_appserver.py \
+dev_appserver.py \
+    --application=${APP_ID} \
+    --host=0.0.0.0 \
+    --skip_sdk_update_check=true \
     --log_level=debug \
     --dev_appserver_log_level=info \
     --enable_console=true \
