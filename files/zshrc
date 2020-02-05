@@ -35,6 +35,8 @@ local p_info="$p_color_reset_all%F{magenta}╚  %f$p_user@$p_host"
 local p_mark="%B%(!,#,$)%b"
 # local p_mark="%#"
 
+# export SUDO_PROMPT="[sudo] Enter correct password:"
+
 # 環境変数 SSH_CLIENT があるかチェックする
 if [[ -z ${SSH_CLIENT} ]]; then
     local p_remote=""
@@ -91,7 +93,6 @@ alias ping="ping -t 3"
 alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
-alias rainbowstream="cd $HOME;rainbowstream;cd -;"
 
 setopt hist_ignore_dups
 setopt share_history
