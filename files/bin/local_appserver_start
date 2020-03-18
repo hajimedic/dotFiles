@@ -108,6 +108,7 @@ pyenv version
     --log_level=debug \
     --dev_appserver_log_level=info \
     --enable_console=true \
+    --datastore_consistency_policy=consistent \
     --storage_path=$STORAGE_PATH \
     $WATCHER_IGNORE \
     $WORKSPACE$NAME \
