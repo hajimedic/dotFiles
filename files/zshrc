@@ -165,7 +165,7 @@ esac
 
 # for python
 export PYTHON_CONFIGURE_OPTS='--enable-unicode=ucs4'
-
+export CLOUDSDK_PYTHON=/usr/bin/python2.7
 
 typeset -U path cdpath fpath manpath
 
