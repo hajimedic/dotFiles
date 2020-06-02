@@ -12,6 +12,8 @@ files/vim/.netrwhist
 files/bin/misspell
 !.gitkeep
 
+*.lock.json
+
 *.pyc
 *.pyo
 *.swp
