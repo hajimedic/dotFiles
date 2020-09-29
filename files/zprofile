@@ -10,7 +10,7 @@ export GAE_PATH=$HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sd
 case ${OSTYPE} in darwin*)
 	export HOMEBREW=~/.homebrew
 	export MANPATH=$MANPATH:$HOMEBREW/share/man
-	path=($HOME/.pyenv/shims $HOME/.rbenv/shims $HOME/.homebrew/share/npm/bin $HOME/.bin $HOMEBREW/bin /usr/local/bin $path)
+	path=($HOME/.pyenv/shims $HOME/.rbenv/shims $HOME/.homebrew/share/npm/bin $HOME/.bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)
 	# homebrew
 	fpath=($HOMEBREW/share/zsh/site-functions $HOMEBREW/share/zsh-completions $HOMEBREW/share/zsh/functions $fpath)
 
