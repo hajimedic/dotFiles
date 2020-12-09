@@ -152,7 +152,6 @@ if has('lua')
     call dein#add('Shougo/neocomplete.vim')
 endif
 call dein#add('scrooloose/syntastic')
-call dein#add('jpalardy/vim-slime')
 call dein#add('Shougo/vimfiler')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-fugitive')
@@ -181,8 +180,8 @@ let g:syntastic_javascript_eslint_exec = 'eslint'
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 let g:syntastic_mode_map = {
             \ 'mode': 'active',
-            \ 'active_filetypes': ['php', 'sh', 'zsh', 'vim'],
-            \ 'passive_filetypes': ['python', 'html', 'xhtml', 'htmldjango', 'javascript']
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': ['rst', 'php', 'sh', 'zsh', 'vim', 'python', 'html', 'xhtml', 'htmldjango', 'javascript']
             \}
 noremap <C-s> :w<CR> :SyntasticCheck<CR>
 
