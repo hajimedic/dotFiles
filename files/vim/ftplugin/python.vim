@@ -3,8 +3,9 @@ setlocal noexpandtab
 
 " in workspace
 if matchstr(expand("%:p:h"), "/workspace") == "/workspace"
-    let g:syntastic_python_pylint_exec = $HOME."/workspace/bin/pylint"
-    let g:syntastic_python_pycodestyle_exec = $HOME."/workspace/bin/pycodestyle"
+    let _path = substitute(expand('%:p:h'),  '\(.*/workspace/[a-z-]\+\).*', '\1',  'g')
+    let g:syntastic_python_pylint_exec = _path."/bin/pylint"
+    let g:syntastic_python_pycodestyle_exec = _path."/bin/pycodestyle"
 endif
 
 " in timestamp
