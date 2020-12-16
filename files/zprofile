@@ -5,12 +5,14 @@ export LC_TIME=en_US.UTF-8
 # export PERL_CPANM_OPT="--mirror ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/"
 export GAE_PATH=$HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
 
-
 # for Mac OS X
 case ${OSTYPE} in darwin*)
 	export HOMEBREW=~/.homebrew
 	export HOMEBREW_CACHE=~/.homebrew_cache
 	export MANPATH=$MANPATH:$HOMEBREW/share/man
+	export HOMEBREW_CELLAR=$HOMEBREW/Cellar
+	export HOMEBREW_PREFIX=$HOMEBREW
+	export HOMEBREW_REPOSITORY=$HOMEBREW
 	export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
 	path=($HOME/.pyenv/shims $HOME/.rbenv/shims $HOME/.homebrew/share/npm/bin $HOME/.bin $HOMEBREW/opt/openjdk\@11/bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)

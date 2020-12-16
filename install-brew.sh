@@ -26,3 +26,6 @@ rm -rf /tmp/homebrew
 cd ~/.homebrew
 git status
 brew update
+
+
+# brew bundle --file ~/.dotFiles/Brewfile
