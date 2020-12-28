@@ -1,8 +1,10 @@
+# ログアウト時間の記録
 LOGFILE=$HOME/.last_log
 
 logout_date=`date +%H:%M`
 logout_sec=`date +%s`
 
+# ログイン時間が記録されていたら、ログイン経過時間を記録
 if [[ ! -z $login_sec && ! -z $login_date ]]; then
 	total_min=`expr \( $logout_sec - $login_sec \) / 60`
 	hour=`expr $total_min / 60`

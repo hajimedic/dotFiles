@@ -107,15 +107,15 @@ eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
-function llast(){
-    if ls /var/tmp/.last_log* > /dev/null 2>&1; then
-        # cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
-        cat $HOME/.last_log /var/tmp/.last_log* | tail -n 30 $* | less
-    else
-        # tail -r $* $HOME/.last_log | less
-        tail -n 30 $* $HOME/.last_log | less
-    fi
-}
+# function llast(){
+#     if ls /var/tmp/.last_log* > /dev/null 2>&1; then
+#         # cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
+#         cat $HOME/.last_log /var/tmp/.last_log* | tail -n 30 $* | less
+#     else
+#         # tail -r $* $HOME/.last_log | less
+#         tail -n 30 $* $HOME/.last_log | less
+#     fi
+# }
 
 function gem(){
     $HOME/.rbenv/shims/gem $*
