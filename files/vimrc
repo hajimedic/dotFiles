@@ -197,7 +197,7 @@ set runtimepath+='$HOME/.vim/bundle/vimfiler'
 set runtimepath+='$HOME/.vim/bundle/vim-fugitive'
 
 " vimfiler setting
-noremap <C-w><C-e> :VimFilerExplorer -winwidth=30<CR>
+noremap <C-w><C-e> :VimFilerExplorer -winwidth=50<CR>
 let g:vimfiler_ignore_pattern = '\%(^\.\|.pyo$\|.mo$\|.pyc$\)'
 
 
