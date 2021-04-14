@@ -1,5 +1,5 @@
 highlight Comment ctermfg=2
-highlight ColorColumn ctermbg=52
+highlight ColorColumn ctermbg=236
 highlight CursorLine cterm=None ctermbg=235
 highlight Directory cterm=bold ctermfg=7
 highlight Identifier ctermfg=3
