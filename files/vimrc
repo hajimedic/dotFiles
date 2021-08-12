@@ -146,7 +146,7 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
-call dein#add('vim-scripts/VimClojure')
+" call dein#add('vim-scripts/VimClojure')
 call dein#add('Shougo/unite.vim')
 if has('lua')
     call dein#add('Shougo/neocomplete.vim')
@@ -159,8 +159,8 @@ call dein#add('sjl/gundo.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('LeafCage/yankround.vim')
 call dein#add('Shougo/vimproc', {'build': 'make'})
-call dein#add('lambdalisue/vim-django-support')
-call dein#add('lambdalisue/vim-pyenv')
+" call dein#add('lambdalisue/vim-django-support')
+" call dein#add('lambdalisue/vim-pyenv')
 
 call dein#add('tpope/vim-markdown')
 
@@ -248,17 +248,17 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'mode_map': { 'c': 'NORMAL' },
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], ['pyenv'], [ 'fugitive', 'filename' ] ],
+    \   'left': [ [ 'mode', 'paste' ], [ 'gitbranch', 'filename' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
     \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'inactive': {
-    \   'left': [ [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'gitbranch', 'filename' ] ]
     \ },
     \ 'tabline': {
     \   'left': [ [ 'tabs' ] ],
-    \   'right': [ [ 'cfi' ] ]
+    \   'right': [ [ 'cd' ] ]
     \ },
     \ 'tab': {
     \   'active': [ 'tabnum', 'readonly', 'filename', 'modified' ],
@@ -267,14 +267,14 @@ let g:lightline = {
     \ 'component_function': {
     \   'modified': 'MyModified',
     \   'readonly': 'MyReadonly',
-    \   'fugitive': 'MyFugitive',
+    \   'gitbranch': 'MyFugitive',
     \   'filename': 'MyFilename',
     \   'fileformat': 'MyFileformat',
     \   'filetype': 'MyFiletype',
     \   'fileencoding': 'MyFileencoding',
     \   'mode': 'MyMode',
     \   'pyenv': 'pyenv#statusline#component',
-    \   'cfi': 'StlCurrentFuncInfo',
+    \   'cd': 'CurrentDirectory',
     \ },
     \ 'tab_component_function': {
     \   'filename': 'LightlineTabFilename',
@@ -292,9 +292,8 @@ function! MyReadonly()
     return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
 endfunction
 
-function! StlCurrentFuncInfo()
-  let info = fnamemodify(getcwd(), ":~") . ' '
-  return info
+function! CurrentDirectory()
+  return fnamemodify(getcwd(), ":~")
 endfunction
 
 function! LightlineTabFilename(n)
@@ -310,7 +309,7 @@ function! TabReadonly(n)
 endfunction
 
 function! MyFilename()
-    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+    return CurrentDirectory() .'/' .('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
         \ &ft == 'unite' ? unite#get_status_string() : 
         \ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
@@ -318,9 +317,9 @@ function! MyFilename()
 endfunction
 
 function! MyFugitive()
-    if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? ''._ : ''
+    if exists("*FugitiveHead")
+        let _ = FugitiveHead()
+        return strlen(_) ? ' '._ : ''
     endif
     return ''
 endfunction

@@ -21,3 +21,10 @@ set transparency=10
 noremap <C-Tab> :tabnext<CR>
 noremap <C-S-Tab> :tabprevious<CR>
 
+function! MyFugitive()
+    if exists("*FugitiveHead")
+        let _ = FugitiveHead()
+        return strlen(_) ? ''._ : ''
+    endif
+    return ''
+endfunction
