@@ -5,9 +5,6 @@ export LC_TIME=en_US.UTF-8
 # export PERL_CPANM_OPT="--mirror ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/"
 export GAE_PATH=$HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
 
-export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init --path)"
-
 # for Mac OS X
 case ${OSTYPE} in darwin*)
 	export HOMEBREW=~/.homebrew
@@ -34,6 +31,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 ps
+
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init --path)"
 
 #if [ -e ~/share/01_Private ]; then 
 #	echo -e $'\e[1m already mounted ~/share\e[m'
