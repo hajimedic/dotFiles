@@ -101,6 +101,8 @@ fi
 cd $HOME/workspace/$NAME
 pyenv version
 
+ulimit -n 1024
+
 ./bin/dev_appserver \
     --application=${APP_ID} \
     --host=0.0.0.0 \

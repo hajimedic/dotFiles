@@ -1,21 +1,27 @@
+# ARCH
+ARCH=`arch`
+BREW_DIR=".homebrew_$ARCH"
+BREW_DIR_CACHE=".homebrew_$ARCH""_cache"
+export PYENV_ROOT="$HOME/.pyenv_$ARCH"
+
 export LSCOLORS=gxfxcxdxbxegedabagacec
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export LC_TIME=en_US.UTF-8
 # export PERL_CPANM_OPT="--mirror ftp://ftp.yz.yamagata-u.ac.jp/pub/lang/cpan/"
-export GAE_PATH=$HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
+export GAE_PATH=$HOME/$BREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine
 
 # for Mac OS X
 case ${OSTYPE} in darwin*)
-	export HOMEBREW=~/.homebrew
-	export HOMEBREW_CACHE=~/.homebrew_cache
+	export HOMEBREW=~/$BREW_DIR
+	export HOMEBREW_CACHE=~/$BREW_DIR_CACHE
 	export MANPATH=$MANPATH:$HOMEBREW/share/man
 	export HOMEBREW_CELLAR=$HOMEBREW/Cellar
 	export HOMEBREW_PREFIX=$HOMEBREW
 	export HOMEBREW_REPOSITORY=$HOMEBREW
 	export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
-	path=($PYENV_ROOT/bin $HOME/.rbenv/shims $HOME/.homebrew/share/npm/bin $HOME/.bin $HOMEBREW/opt/openjdk\@11/bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)
+	path=($PYENV_ROOT/bin $HOME/.rbenv/shims $HOMEBREW/share/npm/bin $HOME/.bin $HOMEBREW/opt/openjdk\@11/bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)
 	# homebrew
 	fpath=($HOMEBREW/share/zsh/site-functions $HOMEBREW/share/zsh-completions $HOMEBREW/share/zsh/functions $fpath)
 
@@ -32,7 +38,6 @@ SAVEHIST=10000
 
 ps
 
-export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init --path)"
 
 #if [ -e ~/share/01_Private ]; then 

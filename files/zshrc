@@ -1,3 +1,7 @@
+# ARCH
+ARCH=`arch`
+BREW_DIR=".homebrew_$ARCH"
+
 ## colors format: http://misc.flogisoft.com/bash/tip_colors_and_formatting
 
 ## color list:
@@ -50,7 +54,8 @@ if [[ -z ${PIPENV_ACTIVE} ]]; then
 else
     local p_remote="[%F{green}PIPENV%f]"
 fi
-local p_base="$p_info$p_remote:$p_mark "
+local p_arch="[%F{magenta}$ARCH%f]"
+local p_base="$p_info$p_arch$p_remote:$p_mark "
 PROMPT=$p_cdir$p_cdir_end$p_base
 source $HOME/.zsh/git-prompt.zsh
 RPROMPT="$p_cdir_full"
@@ -58,11 +63,11 @@ RPROMPT="$p_cdir_full"
 autoload -U compinit
 compinit -u
 
-if [ -e $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]; then
-    source $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+if [ -e $HOME/$BREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]; then
+    source $HOME/$BREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 fi
-if [ -e $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
-    source $HOME/.homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [ -e $HOME/$BREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
+    source $HOME/$BREW_DIR/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=31'
@@ -104,7 +109,7 @@ setopt transient_rprompt
 setopt interactive_comments
 setopt magic_equal_subst
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
 # function llast(){
@@ -117,27 +122,27 @@ eval "$(pyenv init -)"
 #     fi
 # }
 
-function gem(){
-    $HOME/.rbenv/shims/gem $*
-    if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]; then
-        rbenv rehash
-        rehash
-    fi
-}
+# function gem(){
+#     $HOME/.rbenv/shims/gem $*
+#     if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]; then
+#         rbenv rehash
+#         rehash
+#     fi
+# }
 
 # for Mac OS X
 case ${OSTYPE} in darwin*)
-    alias tmux="SHELL=$HOME/.homebrew/bin/zsh tmux"
-    source "$HOME/.homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    # alias tmux="SHELL=$HOME/$BREW_DIR/bin/zsh tmux"
+    source "$HOME/$BREW_DIR/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
     function brew(){
-        $HOME/.homebrew/bin/brew $*
+        $HOME/$BREW_DIR/bin/brew $*
         if [ "$1" = "install" ] || [ "$1" = "upgrade" ] || [ "$1" = "uninstall" ]; then
             rehash
         fi
     }
 
-    export PATH="$HOME/.homebrew/opt/gettext/bin:$PATH"
+    export PATH="$HOME/$BREW_DIR/opt/gettext/bin:$PATH"
     ;;
 esac
 
