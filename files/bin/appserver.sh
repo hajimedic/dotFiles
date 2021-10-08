@@ -13,8 +13,9 @@ STORAGE_PATH=$HOME/workspace/server_storage/dev-storage
 WORKSPACE=$HOME/workspace/
 BACKEND_YAML=''
 EXTRA_OPT=''
-WATCHER_IGNORE="--watcher_ignore_re=(?!.*README\.md)"
-# WATCHER_IGNORE="--watcher_ignore_re=.*/(apps|bin|docs|etc|fasti|static|tools|vender)/.*"
+# WATCHER_IGNORE=""
+# WATCHER_IGNORE="--watcher_ignore_re=(?!.*README\.md)"
+WATCHER_IGNORE="--watcher_ignore_re=.*/(bin|docs|etc|static|tools|vender)/.*"
 
 usage() {
     echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [showmail] [sendmail] [clear_datastore]"
@@ -91,6 +92,7 @@ do
     esac
 done
 
+echo "use $WATCHER_IGNORE"
 echo "use $WORKSPACE$NAME"
 
 if ls $WORKSPACE$NAME/backend*.yaml > /dev/null 2>&1; then
@@ -101,7 +103,7 @@ fi
 cd $HOME/workspace/$NAME
 pyenv version
 
-ulimit -n 1024
+# ulimit -n 1024
 
 ./bin/dev_appserver \
     --application=${APP_ID} \
