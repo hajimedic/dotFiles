@@ -18,3 +18,4 @@ highlight DiffChange ctermbg=235
 highlight DiffAdd ctermbg=17
 highlight DiffDelete ctermbg=52
 highlight StatusLine ctermfg=208 ctermbg=0
+highlight PreProc ctermfg=5

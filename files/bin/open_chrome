@@ -1,5 +1,0 @@
-#! /bin/sh
-
-# see http://chrome.half-moon.org/43.html
-
-open -a Google\ Chrome --args --renderer-process-limit=1 --purge-memory-button
