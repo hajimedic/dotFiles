@@ -15,7 +15,7 @@ BACKEND_YAML=''
 EXTRA_OPT=''
 # WATCHER_IGNORE=""
 # WATCHER_IGNORE="--watcher_ignore_re=(?!.*README\.md)"
-WATCHER_IGNORE="--watcher_ignore_re=.*/(bin|docs|etc|static|tools|vender)/.*"
+WATCHER_IGNORE="--watcher_ignore_re=.*/(bin|docs|etc|static|tools|vendor)/.*"
 
 usage() {
     echo "usage: $PROGNAME [default] [hotfix] [deploy] [feature] [showmail] [sendmail] [clear_datastore]"
