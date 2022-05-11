@@ -142,13 +142,14 @@ case ${OSTYPE} in darwin*)
         fi
     }
 
-    export PATH="$HOME/$BREW_DIR/opt/gettext/bin:$PATH"
+    # export PATH="$HOME/$BREW_DIR/opt/gettext/bin:$PATH"
+    # export PATH="/usr/local/gettext/0_19_8_1/bin:$PATH"
     ;;
 esac
 
 # for python
 export PYTHON_CONFIGURE_OPTS='--enable-unicode=ucs4'
-export CLOUDSDK_PYTHON=/usr/bin/python2.7
+export CLOUDSDK_PYTHON=/usr/bin/python3
 
 typeset -U path cdpath fpath manpath
 

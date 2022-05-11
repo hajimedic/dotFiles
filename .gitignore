@@ -2,6 +2,7 @@ files/config/hub
 files/config/gcloud
 files/config/configstore
 files/config/iTerm2
+files/config/anyenv
 files/earthquake/history*
 files/earthquake/config
 files/vim/bundle/*
