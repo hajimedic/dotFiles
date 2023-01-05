@@ -2,7 +2,8 @@
 ARCH=`arch`
 BREW_DIR=".homebrew_$ARCH"
 BREW_DIR_CACHE=".homebrew_$ARCH""_cache"
-export PYENV_ROOT="$HOME/.pyenv_$ARCH"
+# export PYENV_ROOT="$HOME/.pyenv_$ARCH"
+export ANYENV_ROOT="$HOME/.anyenv_$ARCH"
 
 export LSCOLORS=gxfxcxdxbxegedabagacec
 export LANG=ja_JP.UTF-8
@@ -21,7 +22,8 @@ case ${OSTYPE} in darwin*)
 	export HOMEBREW_REPOSITORY=$HOMEBREW
 	export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 
-	path=($PYENV_ROOT/bin $HOME/.rbenv/shims $HOMEBREW/share/npm/bin $HOME/.bin $HOMEBREW/opt/openjdk\@11/bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)
+	path=($HOME/.rbenv/shims $HOMEBREW/share/npm/bin $HOME/.bin $HOMEBREW/opt/openjdk\@11/bin $HOMEBREW/sbin $HOMEBREW/bin /usr/local/bin $path)
+	# path=($PYENV_ROOT/bin $path)
 	# homebrew
 	fpath=($HOMEBREW/share/zsh/site-functions $HOMEBREW/share/zsh-completions $HOMEBREW/share/zsh/functions $fpath)
 
@@ -38,7 +40,7 @@ SAVEHIST=10000
 
 ps
 
-eval "$(pyenv init --path)"
+# eval "$(pyenv init --path)"
 
 #if [ -e ~/share/01_Private ]; then 
 #	echo -e $'\e[1m already mounted ~/share\e[m'

@@ -152,7 +152,7 @@ call dein#add('Shougo/unite.vim')
 "     call dein#add('Shougo/neocomplete.vim')
 " endif
 call dein#add('scrooloose/syntastic')
-call dein#add('Shougo/vimfiler')
+call dein#add('Shougo/vimfiler.vim')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('sjl/gundo.vim')
@@ -190,15 +190,14 @@ let g:syntastic_mode_map = {
 noremap <C-s> :w<CR> :SyntasticCheck<CR>
 
 " unite setting
-noremap <C-w><C-f> :UniteWithCurrentDir file<CR>
 noremap <C-w><C-b> :Unite buffer<CR>
 noremap <C-w><C-t> :Unite tab<CR>
 
 set nocompatible
 
-set runtimepath+='$HOME/.vim/bundle/unite.vim'
-set runtimepath+='$HOME/.vim/bundle/vimfiler'
-set runtimepath+='$HOME/.vim/bundle/vim-fugitive'
+set runtimepath+='$HOME/.vim/dein/repos/github.com/Shougo/unite.vim'
+set runtimepath+='$HOME/.vim/dein/repos/github.com/Shougo/vimfiler'
+set runtimepath+='$HOME/.vim/dein/repos/github.com/tpope/vim-fugitive'
 
 " vimfiler setting
 noremap <C-w><C-e> :VimFilerExplorer -winwidth=50<CR>

@@ -110,7 +110,8 @@ setopt interactive_comments
 setopt magic_equal_subst
 
 # eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
+eval "$(anyenv init -)"
 
 # function llast(){
 #     if ls /var/tmp/.last_log* > /dev/null 2>&1; then
@@ -154,3 +155,4 @@ export CLOUDSDK_PYTHON=/usr/bin/python3
 typeset -U path cdpath fpath manpath
 
 # ulimit -n 1024
+eval "$(pyenv virtualenv-init -)"

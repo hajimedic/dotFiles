@@ -33,6 +33,7 @@ usage() {
     echo
     exit 1
 }
+DEV_APPSERVER=./bin/dev_appserver
 
 ####### python 2.7 #########
 for OPT in $@
@@ -59,7 +60,9 @@ do
             NAME=$NAME"-navitime-proxy"
             ;;
         'timestamp' )
+            DEV_APPSERVER=dev_appserver.py
             NAME=$NAME"-timestamp"
+            APP_ID=$NAME
             WATCHER_IGNORE="--watcher_ignore_re=.*/(docs|static|tools|vender|etc|bin)/.*"
             ;;
         'showmail'|'--show_mail_body' )
@@ -105,7 +108,7 @@ pyenv version
 
 # ulimit -n 1024
 
-./bin/dev_appserver \
+$DEV_APPSERVER \
     --application=${APP_ID} \
     --host=0.0.0.0 \
     --skip_sdk_update_check=true \

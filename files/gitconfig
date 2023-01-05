@@ -48,3 +48,5 @@
     old = red strike
 [gc]
     auto = 1
+[hub]
+	protocol = ssh
