@@ -95,6 +95,7 @@ alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
 # alias vi="vim"
+alias mvim="mvim --remote-tab-silent"
 
 setopt hist_ignore_dups
 setopt share_history
