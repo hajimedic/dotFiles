@@ -95,7 +95,13 @@ alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
 # alias vi="vim"
-alias mvim="mvim --remote-tab-silent"
+if command -v mvim >/dev/null 2>&1; then
+    alias mvim="mvim --remote-tab-silent"
+fi
+
+if command -v nvim >/dev/null 2>&1; then
+    alias vi="nvim"
+fi
 
 setopt hist_ignore_dups
 setopt share_history
@@ -111,8 +117,8 @@ setopt interactive_comments
 setopt magic_equal_subst
 
 # eval "$(rbenv init -)"
-# eval "$(pyenv init -)"
-eval "$(anyenv init -)"
+eval "$(pyenv init -)"
+# eval "$(anyenv init -)"
 
 # function llast(){
 #     if ls /var/tmp/.last_log* > /dev/null 2>&1; then

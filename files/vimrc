@@ -36,6 +36,8 @@ set breakindent
 set showbreak=↳\ 
 
 let g:python_recommended_style = 0
+let g:python3_host_prog = '/usr/bin/python3'
+" let g:python_host_prog = '/usr/bin/python' 
 
 " undo
 if has('persistent_undo')
@@ -159,12 +161,12 @@ call dein#add('sjl/gundo.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('LeafCage/yankround.vim')
 call dein#add('Shougo/vimproc', {'build': 'make'})
-call dein#add('davidhalter/jedi-vim')
-call dein#add('lambdalisue/vim-pyenv', {
-    \ 'depends' : ['davidhalter/jedi-vim'],
-    \ 'autoload' : {
-    \   'filetypes' : ['python'],
-    \ }})
+" call dein#add('davidhalter/jedi-vim')
+" call dein#add('lambdalisue/vim-pyenv', {
+"     \ 'depends' : ['davidhalter/jedi-vim'],
+"     \ 'autoload' : {
+"     \   'filetypes' : ['python'],
+"     \ }})
 " call dein#add('lambdalisue/vim-django-support')
 
 call dein#add('tpope/vim-markdown')
