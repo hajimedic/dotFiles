@@ -1,6 +1,3 @@
-[user]
-    name = h-oizumi
-    email = h.oizumi@gigei.jp
 [credential]
     helper = osxkeychain
 [core]
