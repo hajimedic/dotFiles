@@ -5,6 +5,7 @@ files/config/iTerm2
 files/config/anyenv
 files/config/nvim/dein/*
 files/config/nvim/undo/*
+files/config/karabiner/automatic_backups/*
 files/earthquake/history*
 files/earthquake/config
 files/vim/bundle/*
