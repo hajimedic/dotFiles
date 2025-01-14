@@ -10,6 +10,7 @@ files/config/nvim/pack/*
 files/config/karabiner/automatic_backups/*
 files/config/DMM
 files/config/gtk-2.0
+files/config/fish
 files/earthquake/history*
 files/earthquake/config
 files/vim/bundle/*
