@@ -48,14 +48,9 @@ else
     local p_remote="[%F{green}SSH%f]"
 fi
 
-# 環境変数 PIPENV_ACTIVE があるかチェックする
-if [[ -z ${PIPENV_ACTIVE} ]]; then
-    local p_remote=""
-else
-    local p_remote="[%F{green}PIPENV%f]"
-fi
+local p_jobs="%(1j.[%F{yellow}%j%f].)"
 local p_arch="[%F{magenta}$ARCH%f]"
-local p_base="$p_info$p_arch$p_remote:$p_mark "
+local p_base="$p_info$p_arch$p_remote$p_jobs:$p_mark "
 PROMPT=$p_cdir$p_cdir_end$p_base
 source $HOME/.zsh/git-prompt.zsh
 RPROMPT="$p_cdir_full"
@@ -81,9 +76,9 @@ function _pip_completion {
     read -cn cword
     reply=( $( COMP_WORDS="$words[*]" \
                COMP_CWORD=$(( cword-1 )) \
-               PIP_AUTO_COMPLETE=1 $words[1] ) )
+               PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ) )
 }
-compctl -K _pip_completion pip
+compdef _pip_completion pip
 # pip zsh completion end
 
 alias ls="ls -GFh"
@@ -94,10 +89,6 @@ alias ping="ping -t 3"
 alias w3m="cd $HOME;WWW_HOME='google.co.jp' w3m; cd -;"
 alias ltail="less +F"
 alias dmg_mount="hdiutil attach"
-# alias vi="vim"
-if command -v mvim >/dev/null 2>&1; then
-    alias mvim="mvim --remote-tab-silent"
-fi
 
 if command -v nvim >/dev/null 2>&1; then
     alias vi="nvim"
@@ -116,28 +107,6 @@ setopt transient_rprompt
 setopt interactive_comments
 setopt magic_equal_subst
 
-# eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-# eval "$(anyenv init -)"
-
-# function llast(){
-#     if ls /var/tmp/.last_log* > /dev/null 2>&1; then
-#         # cat $HOME/.last_log /var/tmp/.last_log* | tail -r $* | less
-#         cat $HOME/.last_log /var/tmp/.last_log* | tail -n 30 $* | less
-#     else
-#         # tail -r $* $HOME/.last_log | less
-#         tail -n 30 $* $HOME/.last_log | less
-#     fi
-# }
-
-# function gem(){
-#     $HOME/.rbenv/shims/gem $*
-#     if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]; then
-#         rbenv rehash
-#         rehash
-#     fi
-# }
-
 # for Mac OS X
 case ${OSTYPE} in darwin*)
     # alias tmux="SHELL=$HOME/$BREW_DIR/bin/zsh tmux"
@@ -149,76 +118,23 @@ case ${OSTYPE} in darwin*)
             rehash
         fi
     }
-
-    # export PATH="$HOME/$BREW_DIR/opt/gettext/bin:$PATH"
-    # export PATH="/usr/local/gettext/0_19_8_1/bin:$PATH"
     ;;
 esac
 
 # for python
-export PYTHON_CONFIGURE_OPTS='--enable-unicode=ucs4'
 export CLOUDSDK_PYTHON=/usr/bin/python3
 
 typeset -U path cdpath fpath manpath
 
 # ulimit -n 1024
-eval "$(pyenv virtualenv-init -)"
+
+# pyenv initialization
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/hajimedic/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-# MISE
-export MISE_SHELL=zsh
-export __MISE_ORIG_PATH="$PATH"
-
-mise() {
-  local command
-  command="${1:-}"
-  if [ "$#" = 0 ]; then
-    command /Users/hajimedic/.homebrew_arm64/bin/mise
-    return
-  fi
-  shift
-
-  case "$command" in
-  deactivate|shell|sh)
-    # if argv doesn't contains -h,--help
-    if [[ ! " $@ " =~ " --help " ]] && [[ ! " $@ " =~ " -h " ]]; then
-      eval "$(command /Users/hajimedic/.homebrew_arm64/bin/mise "$command" "$@")"
-      return $?
-    fi
-    ;;
-  esac
-  command /Users/hajimedic/.homebrew_arm64/bin/mise "$command" "$@"
-}
-
-_mise_hook() {
-  eval "$(/Users/hajimedic/.homebrew_arm64/bin/mise hook-env -s zsh)";
-}
-typeset -ag precmd_functions;
-if [[ -z "${precmd_functions[(r)_mise_hook]+1}" ]]; then
-  precmd_functions=( _mise_hook ${precmd_functions[@]} )
-fi
-typeset -ag chpwd_functions;
-if [[ -z "${chpwd_functions[(r)_mise_hook]+1}" ]]; then
-  chpwd_functions=( _mise_hook ${chpwd_functions[@]} )
-fi
-
-_mise_hook
-if [ -z "${_mise_cmd_not_found:-}" ]; then
-    _mise_cmd_not_found=1
-    [ -n "$(declare -f command_not_found_handler)" ] && eval "${$(declare -f command_not_found_handler)/command_not_found_handler/_command_not_found_handler}"
-
-    function command_not_found_handler() {
-        if [[ "$1" != "mise" && "$1" != "mise-"* ]] && /Users/hajimedic/.homebrew_arm64/bin/mise hook-not-found -s zsh -- "$1"; then
-          _mise_hook
-          "$@"
-        elif [ -n "$(declare -f _command_not_found_handler)" ]; then
-            _command_not_found_handler "$@"
-        else
-            echo "zsh: command not found: $1" >&2
-            return 127
-        fi
-    }
-fi
