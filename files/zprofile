@@ -42,24 +42,5 @@ ps
 
 # eval "$(pyenv init --path)"
 
-#if [ -e ~/share/01_Private ]; then 
-#	echo -e $'\e[1m already mounted ~/share\e[m'
-#else
-#	ping -t 2 -c 1 192.168.2.30 >> /dev/null
-#	RET=$?
-#	if [ ${RET} -eq "0" ]; then
-#		if [ -e ~/share ]; then 
-#			mount_afp afp://xy4br3:xy4br3@192.168.2.30/share ~/share/
-#		else 
-#			mkdir ~/share
-#			mount_afp afp://xy4br3:xy4br3@192.168.2.30/share ~/share/
-#		fi
-#		echo -e $'\e[1m mount ~/share \e[m'
-#	else
-#		echo -e $'\e[1m not connected xy4brNetwork\e[m'
-#	fi
-#fi
-#
-
 # Added by `nodenv init` on Tue Nov  4 01:01:59 JST 2025
 eval "$(nodenv init - --no-rehash zsh)"
