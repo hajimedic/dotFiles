@@ -3,6 +3,7 @@ files/config/gcloud
 files/config/configstore
 files/config/iTerm2
 files/config/anyenv
+files/config/gh
 files/config/github-copilot
 files/config/nvim/dein/*
 files/config/nvim/undo/*
