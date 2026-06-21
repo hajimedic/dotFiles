@@ -6,7 +6,8 @@ return {
     config = function()
       require("lualine").setup({
         options = {
-          theme = "wombat", -- 元の設定に合わせてwombatを指定
+          icons_enabled = false,
+          theme = "tokyonight",
           component_separators = { left = "│", right = "│" },
           section_separators = { left = "", right = "" },
         },
