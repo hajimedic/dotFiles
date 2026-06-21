@@ -1,50 +1,24 @@
 {
-    "global": { "check_for_updates_on_startup": false },
+    "global": {
+        "check_for_updates_on_startup": false,
+        "show_additional_menu_items": true
+    },
     "profiles": [
         {
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Ctrl+[を押したときに、英数キーも送信する（vim用） (rev 2)",
+                        "description": "Change left button + right button to middle button if these buttons are pressed simultaneously (rev 1)",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["ansi", "iso"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "open_bracket",
-                                    "modifiers": { "mandatory": ["control"] }
+                                    "modifiers": { "optional": ["any"] },
+                                    "simultaneous": [
+                                        { "pointing_button": "button1" },
+                                        { "pointing_button": "button2" }
+                                    ]
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "open_bracket",
-                                        "modifiers": ["control"]
-                                    },
-                                    { "key_code": "japanese_eisuu" }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "keyboard_types": ["jis"],
-                                        "type": "keyboard_type_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "close_bracket",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "close_bracket",
-                                        "modifiers": ["control"]
-                                    },
-                                    { "key_code": "japanese_eisuu" }
-                                ],
+                                "to": [{ "pointing_button": "button3" }],
                                 "type": "basic"
                             }
                         ]
